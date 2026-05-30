@@ -117,6 +117,15 @@ export const articles: Article[] = [
     date: "2026-06-15",
     image: "/images/places-01.jpg",
   },
+  {
+    slug: "an-afternoon-in-jeju",
+    title: "제주의 오후",
+    excerpt:
+      "좋은 여행은 많은 장소보다 오래 기억에 남는 한 장면을 남긴다.",
+    category: "Journeys",
+    date: "2026-06-22",
+    image: "/images/gangneung.jpg",
+  },
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
