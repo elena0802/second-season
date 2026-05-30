@@ -11,6 +11,40 @@ export type Article = {
 export const issueLabel = "Issue No. 001";
 export const issueSeason = "Early Spring";
 
+export type JournalIssue = {
+  label: string;
+  title: string;
+  description: string;
+  slugs: string[];
+};
+
+export const journalIssues: JournalIssue[] = [
+  {
+    label: "Issue #002",
+    title: "Summer Notes",
+    description: "여름의 빛, 다시 찾은 장소, 오래된 사람들과의 시간.",
+    slugs: [
+      "why-mornings-became-better",
+      "small-restaurant-worth-returning-to",
+      "lunch-with-an-old-friend",
+      "an-afternoon-in-jeju",
+      "a-garden-where-seasons-appear",
+    ],
+  },
+  {
+    label: "Issue #001",
+    title: "The Beginning of a New Season",
+    description: "두 번째 계절의 시작을 기록한 첫 번째 저널.",
+    slugs: [
+      "after-35-years-teaching",
+      "how-to-know-a-good-place",
+      "cafe-where-sunlight-lingers",
+      "two-days-in-gangneung",
+      "things-that-get-better-with-age",
+    ],
+  },
+];
+
 export const tagline = "The second season begins with curiosity.";
 
 export const siteImages = {
@@ -139,6 +173,16 @@ export const articles: Article[] = [
 
 export function getArticleBySlug(slug: string): Article | undefined {
   return articles.find((article) => article.slug === slug);
+}
+
+export function getArticlesByCategory(category: string): Article[] {
+  return articles.filter((article) => article.category === category).reverse();
+}
+
+export function getArticlesBySlugs(slugs: string[]): Article[] {
+  return slugs
+    .map((slug) => getArticleBySlug(slug))
+    .filter((article): article is Article => article !== undefined);
 }
 
 export function getFeaturedArticle(): Article {
