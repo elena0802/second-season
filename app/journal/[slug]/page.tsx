@@ -1,8 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ArticleMarkdown from "@/components/ArticleMarkdown";
 import EditorialImage from "@/components/EditorialImage";
 import RelatedArticleCard from "@/components/RelatedArticleCard";
 import { articles, getArticleBySlug, getRelatedArticles } from "@/data/articles";
+import {
+  contentExists,
+  enrichArticles,
+  getArticleContent,
+} from "@/lib/content";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -30,11 +36,12 @@ export default async function ArticlePage({ params }: PageProps) {
   const { slug } = await params;
   const article = getArticleBySlug(slug);
 
-  if (!article) {
+  if (!article || !contentExists(slug)) {
     notFound();
   }
 
-  const relatedArticles = getRelatedArticles(slug, 3);
+  const { frontmatter, content } = getArticleContent(slug);
+  const relatedArticles = enrichArticles(getRelatedArticles(slug, 3));
 
   return (
     <article className="pb-24 pt-10 md:pt-14">
@@ -54,7 +61,7 @@ export default async function ArticlePage({ params }: PageProps) {
         </h1>
 
         <p className="mt-5 whitespace-pre-line font-serif text-lg leading-relaxed text-foreground/60 sm:mt-6 sm:text-xl md:text-2xl">
-          {article.subtitle}
+          {frontmatter.subtitle}
         </p>
 
         <p className="mt-6 text-xs tracking-[0.12em] text-foreground/45 sm:mt-8">
@@ -65,8 +72,8 @@ export default async function ArticlePage({ params }: PageProps) {
       <div className="page-shell mx-auto mt-10 max-w-5xl md:mt-16">
         <EditorialImage
           src={article.image}
-          alt={article.imageAlt}
-          caption={article.imageCaption}
+          alt={frontmatter.imageAlt}
+          caption={frontmatter.imageCaption}
           aspect="feature"
           priority
           captionAlign="center"
@@ -75,11 +82,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
       {/* Article Body */}
       <div className="page-shell mx-auto mt-12 max-w-[680px] md:mt-20">
-        <div className="body-reading space-y-8 sm:space-y-10">
-          {article.content.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-        </div>
+        <ArticleMarkdown content={content} />
       </div>
 
       {/* Closing Section */}

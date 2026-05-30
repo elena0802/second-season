@@ -1,9 +1,9 @@
 import Link from "next/link";
 import EditorialImage from "@/components/EditorialImage";
-import type { Article } from "@/data/articles";
+import type { ArticleDisplay } from "@/lib/content";
 
 type ArticleCardProps = {
-  article: Article;
+  article: ArticleDisplay;
   variant?: "default" | "magazine" | "lead";
 };
 
@@ -11,14 +11,12 @@ export default function ArticleCard({
   article,
   variant = "default",
 }: ArticleCardProps) {
-  const imageSrc = article.image;
-
   if (variant === "lead") {
     return (
       <article className="group min-w-0">
         <Link href={`/journal/${article.slug}`} className="block">
           <EditorialImage
-            src={imageSrc}
+            src={article.image}
             alt={article.imageAlt}
             caption={article.imageCaption}
             aspect="feature"
@@ -42,7 +40,7 @@ export default function ArticleCard({
       <article className="group min-w-0">
         <Link href={`/journal/${article.slug}`} className="block">
           <EditorialImage
-            src={imageSrc}
+            src={article.image}
             alt={article.imageAlt}
             caption={article.imageCaption}
             aspect="card"
@@ -62,15 +60,13 @@ export default function ArticleCard({
     <article className="group min-w-0">
       <Link href={`/journal/${article.slug}`} className="block">
         <EditorialImage
-          src={imageSrc}
+          src={article.image}
           alt={article.imageAlt}
           caption={article.imageCaption}
           aspect="card"
         />
         <div className="mt-6">
-          <p className="section-label">
-            {article.category} · {article.readTime}
-          </p>
+          <p className="section-label">{article.category}</p>
           <h3 className="mt-3 font-serif text-xl leading-snug text-foreground transition-colors group-hover:text-accent sm:text-2xl">
             {article.title}
           </h3>

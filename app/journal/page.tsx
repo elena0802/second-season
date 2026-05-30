@@ -2,13 +2,14 @@ import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import EditorialImage from "@/components/EditorialImage";
 import { articles, issueLabel, issueSeason } from "@/data/articles";
+import { enrichArticles } from "@/lib/content";
 
 export const metadata = {
   title: "Journal",
 };
 
 export default function JournalPage() {
-  const [featured, ...rest] = articles;
+  const [featured, ...rest] = enrichArticles(articles);
 
   return (
     <div className="page-shell mx-auto max-w-7xl pb-24 pt-10 md:pt-14">

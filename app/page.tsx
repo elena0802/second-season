@@ -7,10 +7,15 @@ import {
   siteImages,
   tagline,
 } from "@/data/articles";
+import { enrichArticle, enrichArticles } from "@/lib/content";
 
 export default function Home() {
-  const featured = getFeaturedArticle();
-  const [firstRow, secondRow] = [articles.slice(0, 2), articles.slice(2, 5)];
+  const featured = enrichArticle(getFeaturedArticle());
+  const enrichedArticles = enrichArticles(articles);
+  const [firstRow, secondRow] = [
+    enrichedArticles.slice(0, 2),
+    enrichedArticles.slice(2, 5),
+  ];
 
   return (
     <>
