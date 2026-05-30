@@ -11,21 +11,21 @@ export default function JournalPage() {
   const [featured, ...rest] = articles;
 
   return (
-    <div className="mx-auto max-w-7xl px-6 pb-24 pt-12 md:px-12 md:pt-16">
-      <header className="max-w-2xl border-b border-muted/50 pb-12 md:pb-16">
-        <p className="text-[0.65rem] uppercase tracking-[0.32em] text-secondary">
+    <div className="page-shell mx-auto max-w-7xl pb-24 pt-10 md:pt-14">
+      <header className="max-w-2xl border-b border-muted/50 pb-10 md:pb-16">
+        <p className="section-label">
           {issueLabel} · {issueSeason}
         </p>
-        <h1 className="mt-6 font-serif text-5xl tracking-[0.02em] text-foreground md:text-6xl">
+        <h1 className="mt-5 font-serif text-4xl tracking-[0.02em] text-foreground sm:text-5xl md:text-6xl">
           Journal
         </h1>
-        <p className="mt-6 text-base leading-[1.9] text-foreground/70 md:text-lg">
+        <p className="body-calm mt-5 text-foreground/70 sm:mt-6">
           장소, 여행, 그리고 두 번째 계절의 일상을 기록합니다.
         </p>
       </header>
 
-      <section className="py-16 md:py-20">
-        <Link href={`/journal/${featured.slug}`} className="group block">
+      <section className="py-12 md:py-20">
+        <Link href={`/journal/${featured.slug}`} className="group block min-w-0">
           <EditorialImage
             src={featured.image}
             alt={featured.imageAlt}
@@ -34,22 +34,20 @@ export default function JournalPage() {
             priority
             captionAlign="center"
           />
-          <div className="mx-auto mt-12 max-w-2xl text-center">
-            <p className="text-[0.65rem] uppercase tracking-[0.28em] text-secondary">
-              {featured.category}
-            </p>
-            <h2 className="mt-4 font-serif text-4xl text-foreground transition-colors group-hover:text-accent md:text-5xl">
+          <div className="mx-auto mt-10 max-w-2xl text-center md:mt-12">
+            <p className="section-label">{featured.category}</p>
+            <h2 className="mt-4 font-serif text-3xl text-foreground transition-colors group-hover:text-accent sm:text-4xl md:text-5xl">
               {featured.title}
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-foreground/65">
+            <p className="body-calm mt-4 text-foreground/65">
               {featured.excerpt}
             </p>
           </div>
         </Link>
       </section>
 
-      <section className="border-t border-muted/50 py-16 md:py-20">
-        <div className="grid gap-14 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="border-t border-muted/50 py-12 md:py-20">
+        <div className="grid gap-10 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:gap-14">
           {rest.map((article) => (
             <ArticleCard key={article.slug} article={article} variant="magazine" />
           ))}

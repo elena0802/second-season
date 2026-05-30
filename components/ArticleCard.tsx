@@ -11,11 +11,11 @@ export default function ArticleCard({
   article,
   variant = "default",
 }: ArticleCardProps) {
-  const imageSrc = article.image ?? "/images/hero.jpg";
+  const imageSrc = article.image;
 
   if (variant === "lead") {
     return (
-      <article className="group">
+      <article className="group min-w-0">
         <Link href={`/journal/${article.slug}`} className="block">
           <EditorialImage
             src={imageSrc}
@@ -24,13 +24,11 @@ export default function ArticleCard({
             aspect="feature"
           />
           <div className="mt-8 max-w-xl">
-            <p className="text-[0.65rem] uppercase tracking-[0.28em] text-secondary">
-              {article.category}
-            </p>
-            <h3 className="mt-4 font-serif text-3xl leading-snug text-foreground transition-colors group-hover:text-accent md:text-4xl">
+            <p className="section-label">{article.category}</p>
+            <h3 className="mt-4 font-serif text-2xl leading-snug text-foreground transition-colors group-hover:text-accent sm:text-3xl md:text-4xl">
               {article.title}
             </h3>
-            <p className="mt-4 text-sm leading-relaxed text-foreground/65">
+            <p className="mt-4 text-sm leading-[1.8] text-foreground/65 sm:text-base">
               {article.excerpt}
             </p>
           </div>
@@ -41,7 +39,7 @@ export default function ArticleCard({
 
   if (variant === "magazine") {
     return (
-      <article className="group">
+      <article className="group min-w-0">
         <Link href={`/journal/${article.slug}`} className="block">
           <EditorialImage
             src={imageSrc}
@@ -50,9 +48,7 @@ export default function ArticleCard({
             aspect="card"
           />
           <div className="mt-6">
-            <p className="text-[0.65rem] uppercase tracking-[0.28em] text-secondary">
-              {article.category}
-            </p>
+            <p className="section-label">{article.category}</p>
             <h3 className="mt-3 font-serif text-xl leading-snug text-foreground transition-colors group-hover:text-accent md:text-2xl">
               {article.title}
             </h3>
@@ -63,7 +59,7 @@ export default function ArticleCard({
   }
 
   return (
-    <article className="group">
+    <article className="group min-w-0">
       <Link href={`/journal/${article.slug}`} className="block">
         <EditorialImage
           src={imageSrc}
@@ -72,13 +68,13 @@ export default function ArticleCard({
           aspect="card"
         />
         <div className="mt-6">
-          <p className="text-[0.65rem] uppercase tracking-[0.28em] text-secondary">
+          <p className="section-label">
             {article.category} · {article.readTime}
           </p>
-          <h3 className="mt-3 font-serif text-2xl leading-snug text-foreground transition-colors group-hover:text-accent">
+          <h3 className="mt-3 font-serif text-xl leading-snug text-foreground transition-colors group-hover:text-accent sm:text-2xl">
             {article.title}
           </h3>
-          <p className="mt-3 text-sm leading-relaxed text-foreground/65">
+          <p className="mt-3 text-sm leading-[1.8] text-foreground/65 sm:text-base">
             {article.excerpt}
           </p>
         </div>

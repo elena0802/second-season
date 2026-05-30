@@ -16,13 +16,11 @@ const cormorant = Cormorant_Garamond({
 
 const notoSerifKr = Noto_Serif_KR({
   variable: "--font-noto-serif-kr",
-  subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
 
 const notoSansKr = Noto_Sans_KR({
   variable: "--font-noto-sans-kr",
-  subsets: ["latin"],
   weight: ["300", "400", "500"],
 });
 

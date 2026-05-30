@@ -11,21 +11,21 @@ const navItems = [
 export default function Header() {
   return (
     <header className="border-b border-muted/50">
-      <div className="mx-auto max-w-7xl px-6 py-10 md:px-12 md:py-12">
+      <div className="page-shell mx-auto max-w-7xl py-8 md:py-10 lg:py-12">
         <div className="flex flex-col items-center text-center">
-          <Link href="/" className="group">
-            <p className="font-serif text-2xl tracking-[0.22em] text-foreground transition-colors group-hover:text-accent md:text-[1.65rem]">
+          <Link href="/" className="group max-w-full">
+            <p className="font-serif text-lg tracking-[0.16em] text-foreground transition-colors group-hover:text-accent sm:text-xl md:text-2xl md:tracking-[0.22em]">
               SECOND SEASON
             </p>
           </Link>
 
-          <nav aria-label="Primary" className="mt-8">
-            <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 md:gap-x-10">
+          <nav aria-label="Primary" className="mt-6 w-full md:mt-8">
+            <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:gap-x-6 md:gap-x-10">
               {navItems.map((item) => (
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    className="text-[0.7rem] uppercase tracking-[0.28em] text-foreground/70 transition-colors hover:text-accent"
+                    className="text-xs uppercase tracking-[0.22em] text-foreground/70 transition-colors hover:text-accent sm:tracking-[0.28em]"
                   >
                     {item.label}
                   </Link>
