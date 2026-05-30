@@ -1,5 +1,14 @@
 import Link from "next/link";
 
+const navItems = [
+  { href: "/journal", label: "Issues" },
+  { href: "/places", label: "Places" },
+  { href: "/journeys", label: "Journeys" },
+  { href: "/essays", label: "Essays" },
+  { href: "/seasons", label: "Seasons" },
+  { href: "/about", label: "About" },
+];
+
 export default function Footer() {
   return (
     <footer className="mt-auto border-t border-muted/50">
@@ -15,20 +24,17 @@ export default function Footer() {
           </p>
           <nav
             aria-label="Footer"
-            className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
+            className="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:gap-x-6"
           >
-            <Link
-              href="/journal"
-              className="text-xs uppercase tracking-[0.22em] text-foreground/50 transition-colors hover:text-accent"
-            >
-              Journal
-            </Link>
-            <Link
-              href="/about"
-              className="text-xs uppercase tracking-[0.22em] text-foreground/50 transition-colors hover:text-accent"
-            >
-              About
-            </Link>
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="text-xs uppercase tracking-[0.22em] text-foreground/50 transition-colors hover:text-accent"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
           <p className="mt-8 text-xs uppercase tracking-[0.22em] text-foreground/40">
             Powered by Re:Place
