@@ -11,7 +11,7 @@ type EditorialImageProps = {
 };
 
 const aspectClasses = {
-  hero: "aspect-[4/5] md:aspect-[3/4]",
+  hero: "aspect-[4/5] sm:aspect-[3/4]",
   feature: "aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1]",
   card: "aspect-[4/5]",
   wide: "aspect-[21/9] md:aspect-[3/1]",
@@ -26,9 +26,9 @@ const captionAlignClasses = {
 };
 
 const sizeHints = {
-  hero: "(max-width: 768px) 100vw, 50vw",
+  hero: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw",
   feature: "(max-width: 768px) 100vw, 90vw",
-  card: "(max-width: 768px) 100vw, 33vw",
+  card: "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw",
   wide: "100vw",
   editor: "(max-width: 768px) 100vw, 40vw",
   square: "(max-width: 768px) 50vw, 25vw",
@@ -44,8 +44,8 @@ export default function EditorialImage({
   captionAlign = "left",
 }: EditorialImageProps) {
   return (
-    <figure className={className}>
-      <div className={`relative overflow-hidden ${aspectClasses[aspect]}`}>
+    <figure className={`min-w-0 ${className}`}>
+      <div className={`relative w-full overflow-hidden ${aspectClasses[aspect]}`}>
         <Image
           src={src}
           alt={alt}
@@ -57,7 +57,7 @@ export default function EditorialImage({
       </div>
       {caption ? (
         <figcaption
-          className={`mt-3 text-[0.65rem] leading-relaxed tracking-[0.18em] text-foreground/45 ${captionAlignClasses[captionAlign]}`}
+          className={`mt-3 text-xs leading-relaxed tracking-[0.16em] text-foreground/45 ${captionAlignClasses[captionAlign]}`}
         >
           {caption}
         </figcaption>

@@ -15,28 +15,28 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="mx-auto max-w-7xl px-6 py-12 md:px-12 md:py-20 lg:py-24">
+      <section className="page-shell mx-auto max-w-7xl py-12 md:py-20 lg:py-24">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
-          <div className="lg:col-span-5 lg:pt-10">
-            <p className="font-serif text-3xl tracking-[0.14em] text-foreground md:text-4xl">
+          <div className="min-w-0 lg:col-span-5 lg:pt-10">
+            <p className="font-serif text-2xl tracking-[0.12em] text-foreground sm:text-3xl md:text-4xl md:tracking-[0.14em]">
               SECOND SEASON
             </p>
-            <p className="mt-6 font-serif text-xl leading-relaxed text-foreground/80 md:text-2xl">
+            <p className="mt-6 font-serif text-lg leading-relaxed text-foreground/80 sm:text-xl md:text-2xl">
               {tagline}
             </p>
-            <div className="mt-10 space-y-4 text-base leading-[1.9] text-foreground/70 md:text-[1.05rem]">
+            <div className="body-calm mt-10 space-y-4">
               <p>좋은 장소와 시간을 기록합니다.</p>
               <p>삶의 두 번째 계절에서 발견한 것들을 나눕니다.</p>
             </div>
             <Link
               href="/journal"
-              className="mt-12 inline-block border border-foreground/20 px-10 py-3.5 text-[0.7rem] uppercase tracking-[0.3em] text-foreground transition-colors hover:border-accent hover:text-accent"
+              className="mt-10 inline-block border border-foreground/20 px-8 py-3.5 text-xs uppercase tracking-[0.28em] text-foreground transition-colors hover:border-accent hover:text-accent sm:mt-12 sm:px-10 sm:tracking-[0.3em]"
             >
               Explore Journal
             </Link>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="min-w-0 lg:col-span-7">
             <EditorialImage
               src={siteImages.hero.src}
               alt={siteImages.hero.alt}
@@ -50,13 +50,13 @@ export default function Home() {
       </section>
 
       {/* Intro Statement */}
-      <section className="border-y border-muted/50 py-20 md:py-28">
-        <div className="mx-auto max-w-2xl px-6 text-center md:px-12">
-          <p className="text-base leading-[1.9] text-foreground/75 md:text-lg">
+      <section className="border-y border-muted/50 py-16 md:py-28">
+        <div className="page-shell mx-auto max-w-2xl text-center">
+          <p className="body-calm">
             Second Season is a quiet journal of places, moments, and
             well-spent days.
           </p>
-          <p className="mt-8 text-base leading-[1.9] text-foreground/65 md:text-lg">
+          <p className="body-calm mt-8 text-foreground/65">
             35년의 교직 생활 이후에도,
             <br />
             여전히 아름다운 것을 발견하는 한 사람의 기록입니다.
@@ -65,8 +65,8 @@ export default function Home() {
       </section>
 
       {/* Featured Story */}
-      <section className="mx-auto max-w-7xl px-6 py-20 md:px-12 md:py-28">
-        <Link href={`/journal/${featured.slug}`} className="group block">
+      <section className="page-shell mx-auto max-w-7xl py-16 md:py-28">
+        <Link href={`/journal/${featured.slug}`} className="group block min-w-0">
           <EditorialImage
             src={featured.image}
             alt={featured.imageAlt}
@@ -74,17 +74,15 @@ export default function Home() {
             aspect="feature"
             captionAlign="center"
           />
-          <div className="mx-auto mt-12 max-w-3xl text-center md:mt-14">
-            <p className="text-[0.65rem] uppercase tracking-[0.32em] text-secondary">
-              Featured Story
-            </p>
-            <h2 className="mt-6 font-serif text-4xl leading-tight text-foreground transition-colors group-hover:text-accent md:text-5xl lg:text-6xl">
+          <div className="mx-auto mt-10 max-w-3xl text-center md:mt-14">
+            <p className="section-label">Featured Story</p>
+            <h2 className="mt-5 font-serif text-3xl leading-tight text-foreground transition-colors group-hover:text-accent sm:text-4xl md:text-5xl lg:text-6xl">
               {featured.title}
             </h2>
-            <p className="mt-8 whitespace-pre-line text-base leading-[1.9] text-foreground/65 md:text-lg">
+            <p className="body-calm mt-6 whitespace-pre-line text-foreground/65 sm:mt-8">
               {featured.subtitle}
             </p>
-            <p className="mt-10 text-[0.65rem] uppercase tracking-[0.28em] text-accent">
+            <p className="section-label mt-8 text-accent sm:mt-10">
               Read the story
             </p>
           </div>
@@ -92,33 +90,31 @@ export default function Home() {
       </section>
 
       {/* Latest Journal */}
-      <section className="mx-auto max-w-7xl px-6 py-20 md:px-12 md:py-28">
-        <div className="mb-14 flex flex-col gap-4 md:mb-16 md:flex-row md:items-end md:justify-between">
+      <section className="page-shell mx-auto max-w-7xl py-16 md:py-28">
+        <div className="mb-12 flex flex-col gap-4 md:mb-16 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-[0.65rem] uppercase tracking-[0.32em] text-secondary">
-              Latest Journal
-            </p>
-            <h2 className="mt-4 font-serif text-3xl text-foreground md:text-4xl">
+            <p className="section-label">Latest Journal</p>
+            <h2 className="mt-4 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">
               Recent Essays
             </h2>
           </div>
           <Link
             href="/journal"
-            className="text-[0.65rem] uppercase tracking-[0.28em] text-foreground/50 transition-colors hover:text-accent"
+            className="text-xs uppercase tracking-[0.28em] text-foreground/50 transition-colors hover:text-accent"
           >
             View all
           </Link>
         </div>
 
         {firstRow.length > 0 && (
-          <div className="mb-14 grid gap-12 lg:grid-cols-2 lg:gap-14">
+          <div className="mb-12 grid gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-14">
             {firstRow.map((article) => (
               <ArticleCard key={article.slug} article={article} variant="lead" />
             ))}
           </div>
         )}
 
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+        <div className="grid gap-10 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:gap-10">
           {secondRow.map((article) => (
             <ArticleCard
               key={article.slug}
@@ -130,41 +126,40 @@ export default function Home() {
       </section>
 
       {/* Places Worth Remembering */}
-      <section id="places" className="bg-muted py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6 md:px-12">
+      <section id="places" className="bg-muted py-16 md:py-28">
+        <div className="page-shell mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-[0.65rem] uppercase tracking-[0.32em] text-foreground/50">
-              Places
-            </p>
-            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl lg:text-5xl">
+            <p className="section-label text-foreground/50">Places</p>
+            <h2 className="mt-5 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
               Places Worth Remembering
             </h2>
-            <p className="mt-10 text-base leading-[1.9] text-foreground/70 md:text-lg">
+            <p className="body-calm mt-8 text-foreground/70 sm:mt-10">
               좋은 장소는 단순히 예쁜 곳이 아니라,
               <br />
               다시 누군가와 가고 싶은 곳입니다.
             </p>
           </div>
 
-          <div className="mt-16 grid gap-6 md:grid-cols-3 md:gap-8">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 md:mt-16 md:grid-cols-3 md:gap-8">
             {siteImages.places.map((place) => (
-              <EditorialImage
-                key={place.src}
-                src={place.src}
-                alt={place.alt}
-                caption={place.caption}
-                aspect="card"
-                captionAlign="center"
-              />
+              <div key={place.src} className="min-w-0">
+                <EditorialImage
+                  src={place.src}
+                  alt={place.alt}
+                  caption={place.caption}
+                  aspect="card"
+                  captionAlign="center"
+                />
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* About the Editor */}
-      <section className="mx-auto max-w-7xl px-6 py-20 md:px-12 md:py-28">
-        <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
+      <section className="page-shell mx-auto max-w-7xl py-16 md:py-28">
+        <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="min-w-0 lg:col-span-5">
             <EditorialImage
               src={siteImages.editor.src}
               alt={siteImages.editor.alt}
@@ -172,16 +167,14 @@ export default function Home() {
               aspect="editor"
             />
           </div>
-          <div className="lg:col-span-7 lg:pt-6">
-            <p className="text-[0.65rem] uppercase tracking-[0.32em] text-secondary">
-              About the Editor
-            </p>
-            <h2 className="mt-5 font-serif text-3xl leading-snug text-foreground md:text-4xl">
+          <div className="min-w-0 lg:col-span-7 lg:pt-6">
+            <p className="section-label">About the Editor</p>
+            <h2 className="mt-5 font-serif text-2xl leading-snug text-foreground sm:text-3xl md:text-4xl">
               A life spent in the classroom,
               <br />
               now spent in discovery.
             </h2>
-            <div className="mt-10 space-y-6 text-base leading-[1.9] text-foreground/70 md:text-[1.05rem]">
+            <div className="body-calm mt-8 space-y-6 sm:mt-10">
               <p>
                 35년 동안 중학교 교실에서 학생들의 미래를 함께 고민했습니다.
                 진로 상담, 아침 조회, 졸업식—그 모든 순간이 소중했습니다.
@@ -199,7 +192,7 @@ export default function Home() {
             </div>
             <Link
               href="/about"
-              className="mt-10 inline-block text-[0.65rem] uppercase tracking-[0.28em] text-accent transition-colors hover:text-foreground"
+              className="section-label mt-8 inline-block text-accent transition-colors hover:text-foreground sm:mt-10"
             >
               More about Second Season
             </Link>
@@ -208,20 +201,18 @@ export default function Home() {
       </section>
 
       {/* Newsletter */}
-      <section className="border-t border-muted/50 py-20 md:py-28">
-        <div className="mx-auto max-w-xl px-6 text-center md:px-12">
-          <p className="text-[0.65rem] uppercase tracking-[0.32em] text-secondary">
-            Newsletter
-          </p>
-          <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl">
+      <section className="border-t border-muted/50 py-16 md:py-28">
+        <div className="page-shell mx-auto max-w-xl text-center">
+          <p className="section-label">Newsletter</p>
+          <h2 className="mt-5 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">
             Letters from the Second Season
           </h2>
-          <p className="mt-8 text-base leading-[1.9] text-foreground/65">
+          <p className="body-calm mt-6 text-foreground/65 sm:mt-8">
             좋은 장소, 조용한 여행,
             <br />
             그리고 오래 기억하고 싶은 순간들을 가끔 보내드립니다.
           </p>
-          <form className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-0">
+          <form className="mt-10 flex flex-col gap-3 sm:mt-12 sm:flex-row sm:gap-0">
             <label htmlFor="email" className="sr-only">
               Email address
             </label>
@@ -229,11 +220,11 @@ export default function Home() {
               id="email"
               type="email"
               placeholder="your@email.com"
-              className="flex-1 border border-foreground/15 bg-transparent px-5 py-3.5 text-sm text-foreground placeholder:text-foreground/35 focus:border-accent focus:outline-none"
+              className="min-w-0 flex-1 border border-foreground/15 bg-transparent px-5 py-3.5 text-base text-foreground placeholder:text-foreground/35 focus:border-accent focus:outline-none sm:text-sm"
             />
             <button
               type="submit"
-              className="border border-foreground/15 px-8 py-3.5 text-[0.65rem] uppercase tracking-[0.28em] text-foreground transition-colors hover:border-accent hover:text-accent sm:border-l-0"
+              className="border border-foreground/15 px-8 py-3.5 text-xs uppercase tracking-[0.28em] text-foreground transition-colors hover:border-accent hover:text-accent sm:border-l-0"
             >
               Subscribe
             </button>
