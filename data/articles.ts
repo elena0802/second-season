@@ -108,6 +108,15 @@ export const articles: Article[] = [
     date: "2026-06-08",
     image: "/images/places-02.jpg",
   },
+  {
+    slug: "lunch-with-an-old-friend",
+    title: "오래된 친구와의 점심",
+    excerpt:
+      "나이가 들수록 관계는 넓이보다 깊이가 중요해진다.",
+    category: "Essay",
+    date: "2026-06-15",
+    image: "/images/places-01.jpg",
+  },
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
