@@ -90,6 +90,15 @@ export const articles: Article[] = [
     date: "March 2026",
     image: "/images/with-age.jpg",
   },
+  {
+    slug: "why-mornings-became-better",
+    title: "아침이 좋아진 이유",
+    excerpt:
+      "젊을 때는 밤이 좋았지만, 두 번째 계절에는 아침의 고요함이 더 소중해졌다.",
+    category: "Essay",
+    date: "2026-06-01",
+    image: "/images/places-03.jpg",
+  },
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
