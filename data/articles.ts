@@ -131,7 +131,7 @@ export const articles: Article[] = [
       "젊을 때는 밤이 좋았지만, 두 번째 계절에는 아침의 고요함이 더 소중해졌다.",
     category: "Essay",
     date: "2026-06-01",
-    image: "/images/places-03.jpg",
+    image: "/images/editorial/home/home-morning-tea-window.jpg",
   },
   {
     slug: "small-restaurant-worth-returning-to",
@@ -140,7 +140,7 @@ export const articles: Article[] = [
       "좋은 식당은 맛으로 기억되기도 하지만, 결국 다시 가고 싶은 마음으로 남는다.",
     category: "Places",
     date: "2026-06-08",
-    image: "/images/places-02.jpg",
+    image: "/images/editorial/meals/meals-small-restaurant-table.jpg",
   },
   {
     slug: "lunch-with-an-old-friend",
@@ -167,7 +167,7 @@ export const articles: Article[] = [
       "정원은 꽃을 보여주는 곳이 아니라 계절을 보여주는 곳이다.",
     category: "Seasons",
     date: "2026-06-29",
-    image: "/images/good-place.jpg",
+    image: "/images/editorial/seasons/seasons-quiet-garden-path.jpg",
   },
 ];
 
