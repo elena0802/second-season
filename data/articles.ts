@@ -86,7 +86,7 @@ export const articles: Article[] = [
     category: "Essay",
     date: "March 2026",
     featured: true,
-    image: "/images/after-teaching.jpg",
+    image: "/images/editorial/books/books-morning-desk-glasses.jpg",
   },
   {
     slug: "how-to-know-a-good-place",
@@ -95,7 +95,7 @@ export const articles: Article[] = [
       "인스타그램에 잘 나오는 곳과, 다시 가고 싶은 곳은 같은 곳이 아닙니다.",
     category: "Places",
     date: "March 2026",
-    image: "/images/good-place.jpg",
+    image: "/images/editorial/places/places-neighborhood-street-dusk.jpg",
   },
   {
     slug: "cafe-where-sunlight-lingers",
@@ -104,7 +104,7 @@ export const articles: Article[] = [
       "서울 골목에서 찾은, 햇살이 오후 내내 머무는 작은 카페.",
     category: "Places",
     date: "March 2026",
-    image: "/images/sunlit-cafe.jpg",
+    image: "/images/editorial/cafes/cafes-window-seat-afternoon.jpg",
   },
   {
     slug: "two-days-in-gangneung",
@@ -113,7 +113,7 @@ export const articles: Article[] = [
       "관광지를 채우지 않고, 두 골목과 한 해변만 기억하기로 했습니다.",
     category: "Journeys",
     date: "March 2026",
-    image: "/images/gangneung.jpg",
+    image: "/images/editorial/journeys/journeys-gangneung-shore-path.jpg",
   },
   {
     slug: "things-that-get-better-with-age",
@@ -122,7 +122,7 @@ export const articles: Article[] = [
       "빠르게 변하는 것보다, 시간이 지날수록 깊어지는 것들.",
     category: "Essay",
     date: "March 2026",
-    image: "/images/with-age.jpg",
+    image: "/images/editorial/books/books-worn-stack-shelf.jpg",
   },
   {
     slug: "why-mornings-became-better",
@@ -149,7 +149,7 @@ export const articles: Article[] = [
       "나이가 들수록 관계는 넓이보다 깊이가 중요해진다.",
     category: "Essay",
     date: "2026-06-15",
-    image: "/images/places-01.jpg",
+    image: "/images/editorial/meals/meals-two-settings-daylight.jpg",
   },
   {
     slug: "an-afternoon-in-jeju",
@@ -158,7 +158,7 @@ export const articles: Article[] = [
       "좋은 여행은 많은 장소보다 오래 기억에 남는 한 장면을 남긴다.",
     category: "Journeys",
     date: "2026-06-22",
-    image: "/images/gangneung.jpg",
+    image: "/images/editorial/journeys/journeys-jeju-stone-wall-afternoon.jpg",
   },
   {
     slug: "a-garden-where-seasons-appear",
