@@ -99,6 +99,15 @@ export const articles: Article[] = [
     date: "2026-06-01",
     image: "/images/places-03.jpg",
   },
+  {
+    slug: "small-restaurant-worth-returning-to",
+    title: "다시 찾게 되는 작은 식당",
+    excerpt:
+      "좋은 식당은 맛으로 기억되기도 하지만, 결국 다시 가고 싶은 마음으로 남는다.",
+    category: "Places",
+    date: "2026-06-08",
+    image: "/images/places-02.jpg",
+  },
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
