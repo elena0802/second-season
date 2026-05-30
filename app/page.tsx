@@ -1,19 +1,23 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import EditorialImage from "@/components/EditorialImage";
-import { articles, getFeaturedArticle, tagline } from "@/data/articles";
-
-const cardTones = ["linen", "cream", "warm", "sage", "linen"] as const;
+import {
+  articles,
+  getFeaturedArticle,
+  siteImages,
+  tagline,
+} from "@/data/articles";
 
 export default function Home() {
   const featured = getFeaturedArticle();
+  const [firstRow, secondRow] = [articles.slice(0, 2), articles.slice(2, 5)];
 
   return (
     <>
       {/* Hero */}
-      <section className="mx-auto max-w-7xl px-6 py-16 md:px-12 md:py-24 lg:py-28">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <div className="max-w-lg">
+      <section className="mx-auto max-w-7xl px-6 py-12 md:px-12 md:py-20 lg:py-24">
+        <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-5 lg:pt-10">
             <p className="font-serif text-3xl tracking-[0.14em] text-foreground md:text-4xl">
               SECOND SEASON
             </p>
@@ -32,11 +36,15 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="lg:pl-8">
-            <EditorialImage aspect="hero" tone="warm" className="w-full" />
-            <p className="mt-4 text-right text-[0.65rem] uppercase tracking-[0.22em] text-foreground/40">
-              Afternoon light · Coffee · Books
-            </p>
+          <div className="lg:col-span-7">
+            <EditorialImage
+              src={siteImages.hero.src}
+              alt={siteImages.hero.alt}
+              caption={siteImages.hero.caption}
+              aspect="hero"
+              priority
+              captionAlign="right"
+            />
           </div>
         </div>
       </section>
@@ -59,8 +67,14 @@ export default function Home() {
       {/* Featured Story */}
       <section className="mx-auto max-w-7xl px-6 py-20 md:px-12 md:py-28">
         <Link href={`/journal/${featured.slug}`} className="group block">
-          <EditorialImage aspect="feature" tone="sage" className="w-full" />
-          <div className="mx-auto mt-12 max-w-3xl text-center md:mt-16">
+          <EditorialImage
+            src={featured.image}
+            alt={featured.imageAlt}
+            caption={featured.imageCaption}
+            aspect="feature"
+            captionAlign="center"
+          />
+          <div className="mx-auto mt-12 max-w-3xl text-center md:mt-14">
             <p className="text-[0.65rem] uppercase tracking-[0.32em] text-secondary">
               Featured Story
             </p>
@@ -96,45 +110,69 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="grid gap-14 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-10">
-          {articles.map((article, index) => (
+        {firstRow.length > 0 && (
+          <div className="mb-14 grid gap-12 lg:grid-cols-2 lg:gap-14">
+            {firstRow.map((article) => (
+              <ArticleCard key={article.slug} article={article} variant="lead" />
+            ))}
+          </div>
+        )}
+
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+          {secondRow.map((article) => (
             <ArticleCard
               key={article.slug}
               article={article}
               variant="magazine"
-              imageTone={cardTones[index % cardTones.length]}
             />
           ))}
         </div>
       </section>
 
       {/* Places Worth Remembering */}
-      <section
-        id="places"
-        className="bg-muted py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-3xl px-6 text-center md:px-12">
-          <p className="text-[0.65rem] uppercase tracking-[0.32em] text-foreground/50">
-            Places
-          </p>
-          <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl lg:text-5xl">
-            Places Worth Remembering
-          </h2>
-          <p className="mt-10 text-base leading-[1.9] text-foreground/70 md:text-lg">
-            좋은 장소는 단순히 예쁜 곳이 아니라,
-            <br />
-            다시 누군가와 가고 싶은 곳입니다.
-          </p>
+      <section id="places" className="bg-muted py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-6 md:px-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-[0.65rem] uppercase tracking-[0.32em] text-foreground/50">
+              Places
+            </p>
+            <h2 className="mt-5 font-serif text-3xl text-foreground md:text-4xl lg:text-5xl">
+              Places Worth Remembering
+            </h2>
+            <p className="mt-10 text-base leading-[1.9] text-foreground/70 md:text-lg">
+              좋은 장소는 단순히 예쁜 곳이 아니라,
+              <br />
+              다시 누군가와 가고 싶은 곳입니다.
+            </p>
+          </div>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-3 md:gap-8">
+            {siteImages.places.map((place) => (
+              <EditorialImage
+                key={place.src}
+                src={place.src}
+                alt={place.alt}
+                caption={place.caption}
+                aspect="card"
+                captionAlign="center"
+              />
+            ))}
+          </div>
         </div>
       </section>
 
       {/* About the Editor */}
       <section className="mx-auto max-w-7xl px-6 py-20 md:px-12 md:py-28">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <EditorialImage aspect="card" tone="cream" className="max-w-sm" />
+            <EditorialImage
+              src={siteImages.editor.src}
+              alt={siteImages.editor.alt}
+              caption={siteImages.editor.caption}
+              aspect="editor"
+            />
           </div>
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 lg:pt-6">
             <p className="text-[0.65rem] uppercase tracking-[0.32em] text-secondary">
               About the Editor
             </p>

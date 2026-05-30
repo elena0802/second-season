@@ -63,7 +63,14 @@ export default async function ArticlePage({ params }: PageProps) {
         </p>
       </header>
 
-      <EditorialImage aspect="feature" tone="warm" className="my-12 md:my-16" />
+      <EditorialImage
+        src={article.image}
+        alt={article.imageAlt}
+        caption={article.imageCaption}
+        aspect="feature"
+        className="my-12 md:my-16"
+        captionAlign="center"
+      />
 
       <div className="space-y-8 text-lg leading-[1.85] text-foreground/80">
         {article.content.map((paragraph, index) => (
