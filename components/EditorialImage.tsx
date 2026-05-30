@@ -1,32 +1,67 @@
+import Image from "next/image";
+
 type EditorialImageProps = {
-  aspect?: "hero" | "feature" | "card" | "wide";
-  tone?: "cream" | "warm" | "sage" | "linen";
+  src: string;
+  alt: string;
+  caption?: string;
+  aspect?: "hero" | "feature" | "card" | "wide" | "editor" | "square";
+  priority?: boolean;
   className?: string;
+  captionAlign?: "left" | "center" | "right";
 };
 
 const aspectClasses = {
   hero: "aspect-[4/5] md:aspect-[3/4]",
-  feature: "aspect-[16/10] md:aspect-[2/1]",
-  card: "aspect-[3/4]",
-  wide: "aspect-[21/9]",
+  feature: "aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1]",
+  card: "aspect-[4/5]",
+  wide: "aspect-[21/9] md:aspect-[3/1]",
+  editor: "aspect-[4/5] md:aspect-[3/4]",
+  square: "aspect-square",
 };
 
-const toneClasses = {
-  cream: "bg-[#EDE8DF]",
-  warm: "bg-[#E3DACE]",
-  sage: "bg-[#D8D0C4]",
-  linen: "bg-[#E8E2D8]",
+const captionAlignClasses = {
+  left: "text-left",
+  center: "text-center",
+  right: "text-right",
+};
+
+const sizeHints = {
+  hero: "(max-width: 768px) 100vw, 50vw",
+  feature: "(max-width: 768px) 100vw, 90vw",
+  card: "(max-width: 768px) 100vw, 33vw",
+  wide: "100vw",
+  editor: "(max-width: 768px) 100vw, 40vw",
+  square: "(max-width: 768px) 50vw, 25vw",
 };
 
 export default function EditorialImage({
+  src,
+  alt,
+  caption,
   aspect = "card",
-  tone = "warm",
+  priority = false,
   className = "",
+  captionAlign = "left",
 }: EditorialImageProps) {
   return (
-    <div
-      className={`${aspectClasses[aspect]} ${toneClasses[tone]} ${className}`}
-      aria-hidden="true"
-    />
+    <figure className={className}>
+      <div className={`relative overflow-hidden ${aspectClasses[aspect]}`}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          priority={priority}
+          sizes={sizeHints[aspect]}
+          className="object-cover"
+        />
+      </div>
+      {caption ? (
+        <figcaption
+          className={`mt-3 text-[0.65rem] leading-relaxed tracking-[0.18em] text-foreground/45 ${captionAlignClasses[captionAlign]}`}
+        >
+          {caption}
+        </figcaption>
+      ) : null}
+    </figure>
   );
 }

@@ -26,7 +26,14 @@ export default function JournalPage() {
 
       <section className="py-16 md:py-20">
         <Link href={`/journal/${featured.slug}`} className="group block">
-          <EditorialImage aspect="feature" tone="sage" />
+          <EditorialImage
+            src={featured.image}
+            alt={featured.imageAlt}
+            caption={featured.imageCaption}
+            aspect="feature"
+            priority
+            captionAlign="center"
+          />
           <div className="mx-auto mt-12 max-w-2xl text-center">
             <p className="text-[0.65rem] uppercase tracking-[0.28em] text-secondary">
               {featured.category}
@@ -43,13 +50,8 @@ export default function JournalPage() {
 
       <section className="border-t border-muted/50 py-16 md:py-20">
         <div className="grid gap-14 sm:grid-cols-2 lg:grid-cols-3">
-          {rest.map((article, index) => (
-            <ArticleCard
-              key={article.slug}
-              article={article}
-              variant="magazine"
-              imageTone={index % 2 === 0 ? "linen" : "cream"}
-            />
+          {rest.map((article) => (
+            <ArticleCard key={article.slug} article={article} variant="magazine" />
           ))}
         </div>
       </section>
