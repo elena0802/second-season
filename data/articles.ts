@@ -20,6 +20,18 @@ export type JournalIssue = {
 
 export const journalIssues: JournalIssue[] = [
   {
+    label: "Issue #003",
+    title: "Quiet Taste",
+    description: "다시 펼치는 책과 조용해진 취향.",
+    slugs: [
+      "books-we-reread",
+      "rainy-day-bookstore",
+      "a-park-for-slow-walks",
+      "walking-without-a-destination",
+      "the-beginning-of-a-second-season",
+    ],
+  },
+  {
     label: "Issue #002",
     title: "Summer Notes",
     description: "여름의 빛, 다시 찾은 장소, 오래된 사람들과의 시간.",
@@ -168,6 +180,51 @@ export const articles: Article[] = [
     category: "Seasons",
     date: "2026-06-29",
     image: "/images/editorial/seasons/seasons-quiet-garden-path.jpg",
+  },
+  {
+    slug: "books-we-reread",
+    title: "책을 다시 읽게 되는 나이",
+    excerpt:
+      "책은 변하지 않았지만, 읽는 사람은 변한다.",
+    category: "Essay",
+    date: "2026-07-06",
+    image: "/images/editorial/books/books-rereading-old-pages.jpg",
+  },
+  {
+    slug: "rainy-day-bookstore",
+    title: "비 오는 날의 서점",
+    excerpt:
+      "비 오는 거리보다 책장 사이가 더 잘 어울리는 날이 있습니다.",
+    category: "Places",
+    date: "2026-07-13",
+    image: "/images/editorial/books/books-rainy-bookstore.jpg",
+  },
+  {
+    slug: "a-park-for-slow-walks",
+    title: "혼자 걷기 좋은 공원",
+    excerpt:
+      "혼자이지만 외롭지 않은 시간, 조용하지만 비어 있지 않은 오후.",
+    category: "Places",
+    date: "2026-07-20",
+    image: "/images/editorial/parks/parks-solitary-walk-path.jpg",
+  },
+  {
+    slug: "walking-without-a-destination",
+    title: "목적 없는 산책의 기록",
+    excerpt:
+      "어디에 도착하기 위해서가 아니라, 지금의 시간을 조금 더 천천히 지나가기 위해서.",
+    category: "Journeys",
+    date: "2026-07-27",
+    image: "/images/editorial/journeys/journeys-no-destination-walk.jpg",
+  },
+  {
+    slug: "the-beginning-of-a-second-season",
+    title: "두 번째 계절의 시작",
+    excerpt:
+      "끝이 아니라, 다시 호기심을 갖기 시작하는 시간.",
+    category: "Seasons",
+    date: "2026-08-03",
+    image: "/images/editorial/seasons/seasons-second-season-beginning.jpg",
   },
 ];
 
