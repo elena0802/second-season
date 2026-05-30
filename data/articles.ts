@@ -126,6 +126,15 @@ export const articles: Article[] = [
     date: "2026-06-22",
     image: "/images/gangneung.jpg",
   },
+  {
+    slug: "a-garden-where-seasons-appear",
+    title: "계절이 보이는 정원",
+    excerpt:
+      "정원은 꽃을 보여주는 곳이 아니라 계절을 보여주는 곳이다.",
+    category: "Seasons",
+    date: "2026-06-29",
+    image: "/images/good-place.jpg",
+  },
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
