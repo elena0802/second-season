@@ -224,7 +224,7 @@ export const articles: Article[] = [
       "끝이 아니라, 다시 호기심을 갖기 시작하는 시간.",
     category: "Seasons",
     date: "2026-08-03",
-    image: "/images/editorial/seasons/seasons-second-season-beginning.jpg",
+    image: "/images/editorial/seasons/seasons-second-season-beginning-flowers.jpg",
   },
 ];
 
