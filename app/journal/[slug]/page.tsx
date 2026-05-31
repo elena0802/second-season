@@ -3,7 +3,10 @@ import { notFound } from "next/navigation";
 import ArticleMarkdown from "@/components/ArticleMarkdown";
 import EditorialImage from "@/components/EditorialImage";
 import RelatedArticleCard from "@/components/RelatedArticleCard";
+import RelatedPlacesSection from "@/components/RelatedPlacesSection";
+import RePlaceCTA from "@/components/RePlaceCTA";
 import { articles, getArticleBySlug, getRelatedArticles } from "@/data/articles";
+import { relatedPlacesByArticleSlug } from "@/data/relatedPlaces";
 import {
   contentExists,
   enrichArticles,
@@ -42,6 +45,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
   const { frontmatter, content } = getArticleContent(slug);
   const relatedArticles = enrichArticles(getRelatedArticles(slug, 3));
+  const relatedPlaces = relatedPlacesByArticleSlug[slug] ?? [];
 
   return (
     <article className="pb-24 pt-10 md:pt-14">
@@ -85,22 +89,9 @@ export default async function ArticlePage({ params }: PageProps) {
         <ArticleMarkdown content={content} />
       </div>
 
-      {/* Closing Section */}
-      <div className="page-shell mx-auto mt-16 max-w-[680px] md:mt-28">
-        <div className="border-t border-foreground/10 pt-12 md:pt-16">
-          <p className="text-center font-serif text-lg leading-relaxed text-foreground/55 sm:text-xl md:text-2xl">
-            좋은 장소와 시간은 오래 남습니다.
-          </p>
-          <div className="mt-8 text-center sm:mt-10">
-            <Link
-              href="/journal"
-              className="text-xs uppercase tracking-[0.28em] text-foreground/50 transition-colors hover:text-accent"
-            >
-              Back to Journal
-            </Link>
-          </div>
-        </div>
-      </div>
+      <RelatedPlacesSection places={relatedPlaces} />
+
+      <RePlaceCTA />
 
       {/* Related Articles */}
       {relatedArticles.length > 0 && (
