@@ -11,6 +11,7 @@ export type RelatedPlace = {
   context?: string;
   description?: string;
   location?: string;
+  image?: string;
   tags?: string[];
   rePlaceUrl?: string;
   relatedEssay?: RelatedEssay;
