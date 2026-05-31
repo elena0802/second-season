@@ -38,6 +38,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
       id: "place-001",
       name: "창가가 좋은 작은 카페",
       location: "서울, 성북구",
+      image: "/images/editorial/cafes/cafes-window-seat-afternoon.jpg",
       context:
         "글에서 말하는 ‘시간의 속도가 달라지는 장소’ — 화려하지 않지만 오후에 오래 앉을 수 있는 창가.",
       description:
@@ -50,6 +51,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
       id: "place-002",
       name: "골목 끝 조용한 서점",
       location: "서울, 종로구",
+      image: "/images/editorial/books/books-rainy-bookstore.jpg",
       context:
         "처음엔 눈에 띄지 않지만 다시 떠오르는 장소 — 글의 ‘조용한 좋은 장소’ 기준과 맞닿아 있습니다.",
       description:
@@ -77,6 +79,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
       id: "place-004",
       name: "오후 빛이 머무는 창가 카페",
       location: "서울, 마포구",
+      image: "/images/editorial/home/home-morning-tea-window.jpg",
       context:
         "이 글의 중심인 ‘햇살이 오후 내내 머무는 창가’ — 시간이 천천히 흐르는 카페의 구체적인 모습.",
       description:
@@ -89,6 +92,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
       id: "place-005",
       name: "골목 안 작은 정원 카페",
       location: "서울, 서대문구",
+      image: "/images/editorial/seasons/seasons-quiet-garden-path.jpg",
       context:
         "창가에서 바라보는 계절 — 글에서 말하는 ‘마음이 서두르지 않게 되는’ 장소의 또 다른 형태.",
       description:
@@ -194,6 +198,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
       id: "place-013",
       name: "다시 찾게 되는 작은 식당",
       location: "서울, 은평구",
+      image: "/images/editorial/meals/meals-small-restaurant-table.jpg",
       context:
         "맛으로 기억되기도 하지만 결국 ‘다시 가고 싶은 마음’으로 남는 곳 — 이 글의 핵심.",
       description:
@@ -206,6 +211,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
       id: "place-014",
       name: "점심 뒤 차 한 잔 하기 좋은 카페",
       location: "서울, 은평구",
+      image: "/images/editorial/meals/meals-two-settings-daylight.jpg",
       context:
         "식사가 끝나도 바로 일어나지 않게 되는 동네 — 좋은 식당과 이어지는 오후의 시간.",
       description:
