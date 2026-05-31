@@ -1,6 +1,8 @@
 import ArticleCard from "@/components/ArticleCard";
+import CollectionsSection from "@/components/CollectionsSection";
 import PlacesWorthRemembering from "@/components/PlacesWorthRemembering";
 import { getArticlesByCategory } from "@/data/articles";
+import { getAllCollections } from "@/data/collections";
 import { curatedPlacesForPlacesPage } from "@/data/curatedPlaces";
 import { enrichArticles } from "@/lib/content";
 
@@ -11,6 +13,7 @@ export const metadata = {
 };
 
 export default function PlacesPage() {
+  const collections = getAllCollections();
   const curatedPlaces = curatedPlacesForPlacesPage();
   const placesArticles = enrichArticles(getArticlesByCategory("Places"));
 
@@ -27,7 +30,11 @@ export default function PlacesPage() {
       </header>
 
       <div className="py-12 md:py-20">
-        <PlacesWorthRemembering places={curatedPlaces} />
+        <CollectionsSection collections={collections} />
+
+        <div className="pt-12 md:pt-20">
+          <PlacesWorthRemembering places={curatedPlaces} />
+        </div>
 
         <section className="pt-12 md:pt-20">
           <div className="max-w-3xl">

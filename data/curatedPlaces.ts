@@ -54,6 +54,16 @@ export function getAllRelatedPlaces(): CuratedPlace[] {
   return places;
 }
 
+export function getCuratedPlacesByIds(ids: string[]): CuratedPlace[] {
+  const placesById = new Map(
+    getAllRelatedPlaces().map((place) => [place.id, place]),
+  );
+
+  return ids
+    .map((id) => placesById.get(id))
+    .filter((place): place is CuratedPlace => place !== undefined);
+}
+
 /**
  * Manual curation order for the Places page.
  * Places-category essays first (interleaved for variety), then journeys.
