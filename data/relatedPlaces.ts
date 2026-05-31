@@ -1,13 +1,36 @@
-export type RelatedPlace = {
-  id: string;
-  name: string;
-  category: "cafe" | "restaurant" | "walk" | "stay" | "bookstore" | "garden";
-  context?: string;
-  description?: string;
-  location?: string;
-  tags?: string[];
-  rePlaceUrl?: string;
-};
+import type { RelatedEssay, RelatedPlace } from "@/types/relatedPlace";
+
+export type { RelatedEssay, RelatedPlace } from "@/types/relatedPlace";
+
+const relatedEssays = {
+  "how-to-know-a-good-place": {
+    slug: "how-to-know-a-good-place",
+    title: "좋은 장소를 알아보는 기준",
+    excerpt:
+      "인스타그램에 잘 나오는 곳과, 다시 가고 싶은 곳은 같은 곳이 아닙니다.",
+  },
+  "cafe-where-sunlight-lingers": {
+    slug: "cafe-where-sunlight-lingers",
+    title: "햇살이 오래 머무는 카페",
+    excerpt: "서울 골목에서 찾은, 햇살이 오후 내내 머무는 작은 카페.",
+  },
+  "two-days-in-gangneung": {
+    slug: "two-days-in-gangneung",
+    title: "강릉에서 보낸 이틀",
+    excerpt: "관광지를 채우지 않고, 두 골목과 한 해변만 기억하기로 했습니다.",
+  },
+  "an-afternoon-in-jeju": {
+    slug: "an-afternoon-in-jeju",
+    title: "제주의 오후",
+    excerpt: "좋은 여행은 많은 장소보다 오래 기억에 남는 한 장면을 남긴다.",
+  },
+  "small-restaurant-worth-returning-to": {
+    slug: "small-restaurant-worth-returning-to",
+    title: "다시 찾게 되는 작은 식당",
+    excerpt:
+      "좋은 식당은 맛으로 기억되기도 하지만, 결국 다시 가고 싶은 마음으로 남는다.",
+  },
+} satisfies Record<string, RelatedEssay>;
 
 export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
   "how-to-know-a-good-place": [
@@ -21,6 +44,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "사람이 많지 않아 오후에 창가에 앉아 한참 머물 수 있는 곳. 커피보다 빛과 고요함이 먼저 기억납니다.",
       category: "cafe",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["how-to-know-a-good-place"],
     },
     {
       id: "place-002",
@@ -32,6 +56,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "베스트셀러 코너가 없고, 오래된 책장 사이를 천천히 걸을 수 있는 작은 서점. 비 오는 날 특히 잘 어울립니다.",
       category: "bookstore",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["how-to-know-a-good-place"],
     },
     {
       id: "place-003",
@@ -43,6 +68,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "목적지 없이 걷기 좋은 짧은 길. 벤치가 몇 개 있어 쉬었다 가기에 충분합니다.",
       category: "walk",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["how-to-know-a-good-place"],
     },
   ],
 
@@ -57,6 +83,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "서쪽 창 너머로 햇살이 오후 내내 기울어지는 자리. 음악이 크지 않아 책을 펼치기 좋습니다.",
       category: "cafe",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["cafe-where-sunlight-lingers"],
     },
     {
       id: "place-005",
@@ -68,6 +95,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "실내 창가와 작은 마당이 이어져 계절이 보이는 곳. 여름에는 그늘이, 가을에는 낙엽이 먼저 반깁니다.",
       category: "cafe",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["cafe-where-sunlight-lingers"],
     },
     {
       id: "place-006",
@@ -79,6 +107,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "커피 한 잔 뒤 천천히 걷기 좋은 짧은 둘레길. 사람이 많지 않은 평일 오후가 편합니다.",
       category: "walk",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["cafe-where-sunlight-lingers"],
     },
   ],
 
@@ -93,6 +122,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "파도 소리만 들으며 천천히 걷기 좋은 해안 산책로. 해가 기울 무렵이 특히 고요합니다.",
       category: "walk",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["two-days-in-gangneung"],
     },
     {
       id: "place-008",
@@ -104,6 +134,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "화려하지 않지만 창 밖으로 나무가 보이는 방. 이틀 동안 서두르지 않고 쉬기에 충분합니다.",
       category: "stay",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["two-days-in-gangneung"],
     },
     {
       id: "place-009",
@@ -115,6 +146,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "현지 사람들이 자주 찾는 작은 식당. 메뉴가 많지 않지만 매일 같은 맛으로 나옵니다.",
       category: "restaurant",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["two-days-in-gangneung"],
     },
   ],
 
@@ -129,6 +161,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "돌담과 바다 사이를 천천히 걷는 길. 한 장면만 기억해도 충분한 오후입니다.",
       category: "walk",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["an-afternoon-in-jeju"],
     },
     {
       id: "place-011",
@@ -140,6 +173,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "유리창 너머로 바다가 보이는 작은 카페. 사람이 많지 않은 시간대에 가면 한참 앉아 있을 수 있습니다.",
       category: "cafe",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["an-afternoon-in-jeju"],
     },
     {
       id: "place-012",
@@ -151,6 +185,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "꽃보다 나무와 돌, 바람이 먼저 느껴지는 정원. 서두르지 않고 한 바퀴 도는 데 충분한 크기입니다.",
       category: "garden",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["an-afternoon-in-jeju"],
     },
   ],
 
@@ -165,6 +200,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "좌석이 많지 않아 조용히 식사할 수 있는 곳. 주인이 직접 내는 반찬이 매번 비슷하고 정직합니다.",
       category: "restaurant",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["small-restaurant-worth-returning-to"],
     },
     {
       id: "place-014",
@@ -176,6 +212,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "식당에서 걸어갈 만한 거리에 있는 작은 카페. 식사 후에도 자리를 옮기지 않고 쉬고 싶을 때.",
       category: "cafe",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["small-restaurant-worth-returning-to"],
     },
     {
       id: "place-015",
@@ -187,6 +224,7 @@ export const relatedPlacesByArticleSlug: Record<string, RelatedPlace[]> = {
         "식사 후 소화 겸 천천히 걷기 좋은 동네 길. 낯선 곳이 아니라 익숙한 풍경이 편안합니다.",
       category: "walk",
       rePlaceUrl: "#",
+      relatedEssay: relatedEssays["small-restaurant-worth-returning-to"],
     },
   ],
 };
