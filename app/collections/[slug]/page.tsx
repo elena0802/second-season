@@ -1,6 +1,6 @@
-import ArticleCard from "@/components/ArticleCard";
 import CollectionEditorNote from "@/components/CollectionEditorNote";
-import CuratedPlaceCard from "@/components/CuratedPlaceCard";
+import CollectionPlacesSection from "@/components/CollectionPlacesSection";
+import CollectionStoriesSection from "@/components/CollectionStoriesSection";
 import EditorialImage from "@/components/EditorialImage";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -88,55 +88,18 @@ export default async function CollectionPage({ params }: PageProps) {
         <CollectionEditorNote note={collection.editorNote} />
       )}
 
-      {places.length > 0 && (
-        <section
-          className={
-            collection.coverImage || collection.editorNote
-              ? "pt-12 md:pt-20"
-              : "py-12 md:py-20"
-          }
-        >
-          <div className="max-w-3xl">
-            <p className="section-label">Re:Place</p>
-            <h2 className="mt-5 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">
-              Places in This Collection
-            </h2>
-            <p className="body-calm mt-6 text-foreground/70 sm:mt-8">
-              Second Season에서 이 컬렉션과 함께 기록한 장소들입니다.
-            </p>
-          </div>
+      <CollectionPlacesSection
+        places={places}
+        className={
+          collection.coverImage || collection.editorNote
+            ? "pt-12 md:pt-20"
+            : places.length > 0
+              ? "py-12 md:py-20"
+              : undefined
+        }
+      />
 
-          <div className="mt-12 grid gap-10 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:gap-14 md:mt-16">
-            {places.map((place) => (
-              <CuratedPlaceCard key={place.id} place={place} />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {essays.length > 0 && (
-        <section className="border-t border-muted/50 pt-12 md:pt-20">
-          <div className="max-w-3xl">
-            <p className="section-label">Journal</p>
-            <h2 className="mt-5 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">
-              Stories in This Collection
-            </h2>
-            <p className="body-calm mt-6 text-foreground/70 sm:mt-8">
-              이 컬렉션을 통해 다시 읽어볼 수 있는 Second Season 글들입니다.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-10 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:gap-14 md:mt-16">
-            {essays.map((essay) => (
-              <ArticleCard
-                key={essay.slug}
-                article={essay}
-                variant="magazine"
-              />
-            ))}
-          </div>
-        </section>
-      )}
+      <CollectionStoriesSection essays={essays} />
     </div>
   );
 }
