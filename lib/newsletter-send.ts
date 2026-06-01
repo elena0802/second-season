@@ -72,12 +72,13 @@ export function getNewsletterSendConfig(): NewsletterSendConfig {
 
 export function renderNewsletterForSend(
   newsletterSlug: string,
+  recipientEmail: string,
 ): RenderedNewsletterEmail {
   const issue = requirePublishedIssue(newsletterSlug);
 
   return {
-    html: renderNewsletterEmailHtml(newsletterSlug),
-    text: renderNewsletterEmailText(newsletterSlug),
+    html: renderNewsletterEmailHtml(newsletterSlug, recipientEmail),
+    text: renderNewsletterEmailText(newsletterSlug, recipientEmail),
     subject: issue.subject,
   };
 }
@@ -170,7 +171,10 @@ export async function sendTestNewsletterEmail(
   requirePublishedIssue(newsletterSlug);
 
   const config = getNewsletterSendConfig();
-  const rendered = renderNewsletterForSend(newsletterSlug);
+  const rendered = renderNewsletterForSend(
+    newsletterSlug,
+    config.adminEmail,
+  );
   const messageId = await sendOneNewsletterEmail(
     config,
     rendered,
@@ -196,10 +200,10 @@ export async function sendNewsletterToAllSubscribers(
   }
 
   const config = getNewsletterSendConfig();
-  const rendered = renderNewsletterForSend(newsletterSlug);
   const messageIds: string[] = [];
 
   for (const email of subscribers) {
+    const rendered = renderNewsletterForSend(newsletterSlug, email);
     const messageId = await sendOneNewsletterEmail(config, rendered, email);
     messageIds.push(messageId);
   }

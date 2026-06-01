@@ -2,6 +2,7 @@ import { getArticlesBySlugs } from "@/data/articles";
 import { getCollectionBySlug } from "@/data/collections";
 import { getNewsletterIssueBySlug } from "@/data/newsletters";
 import { SITE_URL } from "@/lib/constants";
+import { buildUnsubscribeUrl } from "@/lib/newsletter-unsubscribe";
 import {
   formatNewsletterMonthYear,
   getNewsletterIssueLabel,
@@ -104,31 +105,12 @@ function storiesListHtml(stories: Article[], newsletterUrl: string): string {
 </table>`;
 }
 
-export function renderNewsletterEmailHtmlFromIssue(
-  issue: NewsletterIssue,
-): string {
-  const collection = getCollectionBySlug(issue.collectionSlug);
-
-  if (!collection) {
-    throw new Error(
-      `Collection not found for newsletter "${issue.slug}": ${issue.collectionSlug}`,
-    );
-  }
-
-  const stories = getArticlesBySlugs(collection.essaySlugs);
-
-  return renderNewsletterEmailHtmlContent({
-    issue,
-    collection,
-    stories,
-  });
-}
-
 function renderNewsletterEmailHtmlContent({
   issue,
   collection,
   stories,
-}: NewsletterEmailContent): string {
+  recipientEmail,
+}: NewsletterEmailContent & { recipientEmail?: string }): string {
   const newsletterUrl = absoluteUrl(`/newsletter/${issue.slug}`);
   const collectionUrl = absoluteUrl(`/collections/${collection.slug}`);
   const issueLabel = getNewsletterIssueLabel(issue.title);
@@ -136,6 +118,11 @@ function renderNewsletterEmailHtmlContent({
   const publishedDate = formatPublishedDate(issue.publishedAt);
 
   const metaParts = [issueLabel, monthYear].filter(Boolean).join(" · ");
+  const unsubscribeFooter = recipientEmail
+    ? `<p style="margin: 20px 0 0; font-size: 12px; line-height: 1.7; color: #8a8a8a;">
+                <a href="${buildUnsubscribeUrl(recipientEmail)}" style="color: #8a8a8a; text-decoration: underline;">Unsubscribe</a>
+              </p>`
+    : "";
 
   const subtitleBlock = collection.subtitle
     ? `<p style="margin: 8px 0 0; font-size: 17px; line-height: 1.6; font-family: Georgia, 'Times New Roman', serif; color: #6b6b6b;">${escapeHtml(collection.subtitle)}</p>`
@@ -193,6 +180,7 @@ function renderNewsletterEmailHtmlContent({
               <p style="margin: 16px 0 0; font-size: 13px;">
                 <a href="${newsletterUrl}" style="color: #7a8570; text-decoration: none; border-bottom: 1px solid #d8d0c4;">Read on the web</a>
               </p>
+              ${unsubscribeFooter}
             </td>
           </tr>
         </table>
@@ -203,14 +191,25 @@ function renderNewsletterEmailHtmlContent({
 </html>`;
 }
 
-export function renderNewsletterEmailHtml(newsletterSlug: string): string {
+export function renderNewsletterEmailHtml(
+  newsletterSlug: string,
+  recipientEmail?: string,
+): string {
   const { issue, collection, stories } =
     resolveNewsletterEmailContent(newsletterSlug);
 
-  return renderNewsletterEmailHtmlContent({ issue, collection, stories });
+  return renderNewsletterEmailHtmlContent({
+    issue,
+    collection,
+    stories,
+    recipientEmail,
+  });
 }
 
-export function renderNewsletterEmailText(newsletterSlug: string): string {
+export function renderNewsletterEmailText(
+  newsletterSlug: string,
+  recipientEmail?: string,
+): string {
   const { issue, collection, stories } =
     resolveNewsletterEmailContent(newsletterSlug);
 
@@ -255,6 +254,9 @@ export function renderNewsletterEmailText(newsletterSlug: string): string {
     storyLines ? "— Continue Exploring —\n\n" + storyLines : "",
     "",
     `Read the full letter: ${newsletterUrl}`,
+    ...(recipientEmail
+      ? ["", `Unsubscribe: ${buildUnsubscribeUrl(recipientEmail)}`]
+      : []),
     "",
     "Second Season — A journal of places, moments, and the second season of life.",
   ]
