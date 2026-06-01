@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import EditorialImage from "@/components/EditorialImage";
+import NewsletterSubscribeForm from "@/components/NewsletterSubscribeForm";
 import {
   articles,
   getFeaturedArticle,
@@ -217,23 +218,7 @@ export default function Home() {
             <br />
             그리고 오래 기억하고 싶은 순간들을 가끔 보내드립니다.
           </p>
-          <form className="mt-10 flex flex-col gap-3 sm:mt-12 sm:flex-row sm:gap-0">
-            <label htmlFor="email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="email"
-              type="email"
-              placeholder="your@email.com"
-              className="min-w-0 flex-1 border border-foreground/15 bg-transparent px-5 py-3.5 text-base text-foreground placeholder:text-foreground/35 focus:border-accent focus:outline-none sm:text-sm"
-            />
-            <button
-              type="submit"
-              className="border border-foreground/15 px-8 py-3.5 text-xs uppercase tracking-[0.28em] text-foreground transition-colors hover:border-accent hover:text-accent sm:border-l-0"
-            >
-              Subscribe
-            </button>
-          </form>
+          <NewsletterSubscribeForm source="home" />
         </div>
       </section>
     </>
