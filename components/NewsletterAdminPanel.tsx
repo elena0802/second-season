@@ -14,12 +14,22 @@ type NewsletterAdminIssue = {
   alreadySent: boolean;
   sentAt: string | null;
   recipientCount: number | null;
+  campaignStatus: "sent" | "not_sent";
+};
+
+type NewsletterAdminSystemStatus = {
+  resend: boolean;
+  supabase: boolean;
+  unsubscribe: boolean;
 };
 
 type NewsletterAdminOverview = {
   ok: true;
   activeSubscriberCount: number;
   sendBatchLimit: number;
+  publishedIssueCount: number;
+  sentCampaignCount: number;
+  systemStatus: NewsletterAdminSystemStatus;
   issues: NewsletterAdminIssue[];
 };
 
@@ -48,6 +58,181 @@ function formatSentAt(sentAt: string): string {
     hour: "2-digit",
     minute: "2-digit",
   });
+}
+
+function HealthCard({
+  label,
+  value,
+  detail,
+}: {
+  label: string;
+  value: string | number;
+  detail?: string;
+}) {
+  return (
+    <div className="flex flex-col justify-between border border-foreground/10 bg-background/60 px-5 py-6 sm:px-6">
+      <p className="section-label">{label}</p>
+      <p className="mt-6 font-serif text-3xl leading-none text-foreground sm:text-4xl">
+        {value}
+      </p>
+      {detail && (
+        <p className="body-calm mt-4 text-foreground/55">{detail}</p>
+      )}
+    </div>
+  );
+}
+
+function StatusBadge({
+  label,
+  connected,
+}: {
+  label: string;
+  connected: boolean;
+}) {
+  return (
+    <div className="flex items-center gap-3 border border-foreground/10 bg-background/40 px-4 py-3.5">
+      <span
+        className={`text-sm leading-none ${connected ? "text-accent" : "text-foreground/35"}`}
+        aria-hidden
+      >
+        {connected ? "✓" : "—"}
+      </span>
+      <span className="text-sm text-foreground/75">{label}</span>
+      <span className="sr-only">{connected ? "Connected" : "Not configured"}</span>
+    </div>
+  );
+}
+
+function IssueCard({
+  issue,
+  sendBatchLimit,
+  activeSubscriberCount,
+  isSending,
+  sendingMode,
+  onSendTest,
+  onSendAll,
+}: {
+  issue: NewsletterAdminIssue;
+  sendBatchLimit: number;
+  activeSubscriberCount: number;
+  isSending: boolean;
+  sendingMode: "test" | "all" | null;
+  onSendTest: () => void;
+  onSendAll: () => void;
+}) {
+  const sendAllDisabled =
+    issue.alreadySent ||
+    issue.status !== "published" ||
+    activeSubscriberCount === 0;
+
+  return (
+    <article className="border border-foreground/10 bg-background/40 px-5 py-8 sm:px-8 sm:py-10">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+        <span className="section-label">
+          {issue.status === "published" ? "Published" : "Draft"}
+        </span>
+        <span
+          className={`text-xs uppercase tracking-[0.22em] ${
+            issue.campaignStatus === "sent"
+              ? "text-accent"
+              : "text-foreground/40"
+          }`}
+        >
+          {issue.campaignStatus === "sent" ? "Campaign sent" : "Not sent"}
+        </span>
+      </div>
+
+      <h3 className="mt-5 font-serif text-2xl leading-snug text-foreground sm:text-[1.75rem]">
+        {issue.title}
+      </h3>
+      <p className="mt-3 font-serif text-lg leading-relaxed text-foreground/55 sm:text-xl">
+        {issue.subject}
+      </p>
+
+      <dl className="mt-8 grid gap-4 border-t border-muted/50 pt-6 sm:grid-cols-2">
+        <div>
+          <dt className="text-xs uppercase tracking-[0.22em] text-foreground/40">
+            Status
+          </dt>
+          <dd className="mt-2 text-sm text-foreground/75">
+            {issue.status === "published" ? "Published" : "Draft"}
+          </dd>
+        </div>
+        <div>
+          <dt className="text-xs uppercase tracking-[0.22em] text-foreground/40">
+            Published
+          </dt>
+          <dd className="mt-2 text-sm text-foreground/75">
+            {formatPublishedDate(issue.publishedAt)}
+          </dd>
+        </div>
+      </dl>
+
+      {issue.alreadySent && issue.sentAt && (
+        <div className="mt-8 border-t border-muted/40 pt-6">
+          <p className="section-label">Last campaign</p>
+          <dl className="mt-4 space-y-3">
+            <div>
+              <dt className="text-xs uppercase tracking-[0.22em] text-foreground/40">
+                Sent date
+              </dt>
+              <dd className="mt-1.5 text-sm text-foreground/75">
+                {formatSentAt(issue.sentAt)}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs uppercase tracking-[0.22em] text-foreground/40">
+                Recipient count
+              </dt>
+              <dd className="mt-1.5 text-sm text-foreground/75">
+                {issue.recipientCount ?? "—"}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-xs uppercase tracking-[0.22em] text-foreground/40">
+                Campaign status
+              </dt>
+              <dd className="mt-1.5 text-sm text-foreground/75">Completed</dd>
+            </div>
+          </dl>
+        </div>
+      )}
+
+      <Link
+        href={`/newsletter/${issue.slug}`}
+        className="mt-8 inline-block text-xs uppercase tracking-[0.28em] text-foreground/45 transition-colors hover:text-accent"
+      >
+        Preview on web
+      </Link>
+
+      <div className="mt-10 flex flex-col gap-3 border-t border-muted/40 pt-8 sm:flex-row">
+        <button
+          type="button"
+          disabled={isSending || issue.status !== "published"}
+          onClick={onSendTest}
+          className="border border-foreground/15 px-6 py-3.5 text-xs uppercase tracking-[0.28em] text-foreground transition-colors hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          {isSending && sendingMode === "test" ? "Sending…" : "Send test"}
+        </button>
+        <button
+          type="button"
+          disabled={isSending || sendAllDisabled}
+          onClick={onSendAll}
+          className="border border-foreground/15 px-6 py-3.5 text-xs uppercase tracking-[0.28em] text-foreground transition-colors hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          {isSending && sendingMode === "all" ? "Sending…" : "Send to all"}
+        </button>
+      </div>
+
+      {!issue.alreadySent &&
+        issue.status === "published" &&
+        activeSubscriberCount > sendBatchLimit && (
+          <p className="body-calm mt-4 text-foreground/50">
+            다음 발송 시 최대 {sendBatchLimit}명까지 전달됩니다.
+          </p>
+        )}
+    </article>
+  );
 }
 
 export default function NewsletterAdminPanel() {
@@ -269,7 +454,7 @@ export default function NewsletterAdminPanel() {
     return (
       <div className="mx-auto max-w-md">
         <p className="section-label">Admin</p>
-        <h2 className="mt-4 font-serif text-2xl text-foreground">
+        <h2 className="mt-4 font-serif text-2xl text-foreground sm:text-3xl">
           Enter admin secret
         </h2>
         <p className="body-calm mt-4 text-foreground/65">
@@ -314,7 +499,7 @@ export default function NewsletterAdminPanel() {
         <div>
           <p className="section-label">Admin</p>
           <h2 className="mt-4 font-serif text-2xl text-foreground sm:text-3xl">
-            Newsletter sends
+            Newsletter
           </h2>
         </div>
         <button
@@ -327,97 +512,71 @@ export default function NewsletterAdminPanel() {
       </div>
 
       {overviewLoading && (
-        <p className="body-calm mt-10 text-foreground/60">불러오는 중…</p>
+        <p className="body-calm mt-12 text-foreground/60">불러오는 중…</p>
       )}
 
       {overviewError && (
-        <p className="mt-10 text-sm text-foreground/60" role="alert">
+        <p className="mt-12 text-sm text-foreground/60" role="alert">
           {overviewError}
         </p>
       )}
 
       {overview && !overviewLoading && (
         <>
-          <div className="mt-10 border border-foreground/10 px-5 py-6 sm:px-6">
-            <p className="section-label">Subscribers</p>
-            <p className="mt-3 font-serif text-2xl text-foreground">
-              {overview.activeSubscriberCount} active
-            </p>
-            <p className="body-calm mt-3 text-foreground/60">
-              한 번에 최대 {overview.sendBatchLimit}명까지 발송됩니다.
-            </p>
-          </div>
+          <section className="mt-12">
+            <p className="section-label">Newsletter health</p>
+            <div className="mt-6 grid gap-4 sm:grid-cols-3">
+              <HealthCard
+                label="Active subscribers"
+                value={overview.activeSubscriberCount}
+                detail={`Up to ${overview.sendBatchLimit} per send`}
+              />
+              <HealthCard
+                label="Published issues"
+                value={overview.publishedIssueCount}
+              />
+              <HealthCard
+                label="Sent campaigns"
+                value={overview.sentCampaignCount}
+              />
+            </div>
+          </section>
 
-          <div className="mt-12 space-y-10">
-            {overview.issues.map((issue) => {
-              const isSending = sendingSlug === issue.slug;
-              const sendAllDisabled =
-                issue.alreadySent ||
-                issue.status !== "published" ||
-                overview.activeSubscriberCount === 0;
+          <section className="mt-12 border-t border-muted/50 pt-12">
+            <p className="section-label">System status</p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              <StatusBadge
+                label="Resend connected"
+                connected={overview.systemStatus.resend}
+              />
+              <StatusBadge
+                label="Supabase connected"
+                connected={overview.systemStatus.supabase}
+              />
+              <StatusBadge
+                label="Unsubscribe enabled"
+                connected={overview.systemStatus.unsubscribe}
+              />
+            </div>
+          </section>
 
-              return (
-                <article
+          <section className="mt-16">
+            <p className="section-label">Issues</p>
+            <div className="mt-8 space-y-6">
+              {overview.issues.map((issue) => (
+                <IssueCard
                   key={issue.slug}
-                  className="border-t border-muted/50 pt-10 first:border-t-0 first:pt-0"
-                >
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                    <div className="max-w-2xl">
-                      <p className="section-label">
-                        {issue.status === "published" ? "Published" : "Draft"}
-                        {issue.alreadySent ? " · Sent" : " · Not sent"}
-                      </p>
-                      <h3 className="mt-3 font-serif text-2xl text-foreground">
-                        {issue.title}
-                      </h3>
-                      <p className="mt-2 font-serif text-lg text-foreground/55">
-                        {issue.subject}
-                      </p>
-                      <p className="mt-4 text-xs tracking-[0.12em] text-foreground/45">
-                        {formatPublishedDate(issue.publishedAt)}
-                      </p>
-                      {issue.alreadySent && issue.sentAt && (
-                        <p className="body-calm mt-4 text-foreground/60">
-                          Sent {formatSentAt(issue.sentAt)}
-                          {issue.recipientCount !== null &&
-                            ` · ${issue.recipientCount} recipients`}
-                        </p>
-                      )}
-                      <Link
-                        href={`/newsletter/${issue.slug}`}
-                        className="mt-5 inline-block text-xs uppercase tracking-[0.28em] text-foreground/45 transition-colors hover:text-accent"
-                      >
-                        Preview on web
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                    <button
-                      type="button"
-                      disabled={isSending || issue.status !== "published"}
-                      onClick={() => void handleSend(issue.slug, "test")}
-                      className="border border-foreground/15 px-6 py-3 text-xs uppercase tracking-[0.28em] text-foreground transition-colors hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      {isSending && sendingMode === "test"
-                        ? "Sending…"
-                        : "Send test"}
-                    </button>
-                    <button
-                      type="button"
-                      disabled={isSending || sendAllDisabled}
-                      onClick={() => void handleSend(issue.slug, "all")}
-                      className="border border-foreground/15 px-6 py-3 text-xs uppercase tracking-[0.28em] text-foreground transition-colors hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      {isSending && sendingMode === "all"
-                        ? "Sending…"
-                        : "Send to all"}
-                    </button>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
+                  issue={issue}
+                  sendBatchLimit={overview.sendBatchLimit}
+                  activeSubscriberCount={overview.activeSubscriberCount}
+                  isSending={sendingSlug === issue.slug}
+                  sendingMode={sendingSlug === issue.slug ? sendingMode : null}
+                  onSendTest={() => void handleSend(issue.slug, "test")}
+                  onSendAll={() => void handleSend(issue.slug, "all")}
+                />
+              ))}
+            </div>
+          </section>
         </>
       )}
 
@@ -425,8 +584,8 @@ export default function NewsletterAdminPanel() {
         <div
           className={`mt-12 border px-5 py-5 text-sm leading-relaxed sm:px-6 ${
             result.tone === "success"
-              ? "border-foreground/15 text-foreground/75"
-              : "border-foreground/20 text-foreground/65"
+              ? "border-foreground/15 bg-background/50 text-foreground/75"
+              : "border-foreground/20 bg-background/30 text-foreground/65"
           }`}
           role="status"
         >

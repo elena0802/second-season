@@ -11,13 +11,35 @@ export type NewsletterAdminIssue = {
   alreadySent: boolean;
   sentAt: string | null;
   recipientCount: number | null;
+  campaignStatus: "sent" | "not_sent";
+};
+
+export type NewsletterAdminSystemStatus = {
+  resend: boolean;
+  supabase: boolean;
+  unsubscribe: boolean;
 };
 
 export type NewsletterAdminOverview = {
   activeSubscriberCount: number;
   sendBatchLimit: number;
+  publishedIssueCount: number;
+  sentCampaignCount: number;
+  systemStatus: NewsletterAdminSystemStatus;
   issues: NewsletterAdminIssue[];
 };
+
+function getSystemStatusConfig(): NewsletterAdminSystemStatus {
+  return {
+    resend: Boolean(
+      process.env.RESEND_API_KEY && process.env.NEWSLETTER_FROM_EMAIL,
+    ),
+    supabase: Boolean(
+      process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY,
+    ),
+    unsubscribe: Boolean(process.env.NEWSLETTER_UNSUBSCRIBE_SECRET),
+  };
+}
 
 type CampaignRow = {
   newsletter_slug: string;
@@ -81,13 +103,24 @@ export async function buildNewsletterAdminOverview(): Promise<NewsletterAdminOve
         alreadySent,
         sentAt: campaign?.sent_at ?? null,
         recipientCount: campaign?.recipient_count ?? null,
+        campaignStatus: alreadySent ? "sent" : "not_sent",
       };
     },
   );
 
+  const publishedIssueCount = issues.filter(
+    (issue) => issue.status === "published",
+  ).length;
+
   return {
     activeSubscriberCount,
     sendBatchLimit: NEWSLETTER_SEND_BATCH_LIMIT,
+    publishedIssueCount,
+    sentCampaignCount: campaigns.size,
+    systemStatus: {
+      ...getSystemStatusConfig(),
+      supabase: true,
+    },
     issues,
   };
 }

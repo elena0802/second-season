@@ -13,8 +13,8 @@ export default function NewsletterAdminPage() {
         <h1 className="mt-5 font-serif text-4xl tracking-[0.02em] text-foreground sm:text-5xl">
           Admin
         </h1>
-        <p className="body-calm mt-5 text-foreground/65 sm:mt-6">
-          Second Season 편지 발송을 위한 내부 페이지입니다.
+        <p className="body-calm mt-5 max-w-xl text-foreground/65 sm:mt-6">
+          편지 발송과 운영 상태를 확인하는 내부 페이지입니다.
         </p>
       </header>
 
