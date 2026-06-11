@@ -50,7 +50,7 @@ export default async function ArticlePage({ params }: PageProps) {
   return (
     <article className="pb-24 pt-10 md:pt-14">
       {/* Article Hero */}
-      <header className="page-shell mx-auto max-w-4xl">
+      <header className="page-shell mx-auto max-w-4xl text-center">
         <Link
           href="/journal"
           className="text-xs uppercase tracking-[0.28em] text-foreground/45 transition-colors hover:text-accent"
@@ -77,10 +77,8 @@ export default async function ArticlePage({ params }: PageProps) {
         <EditorialImage
           src={article.image}
           alt={frontmatter.imageAlt}
-          caption={frontmatter.imageCaption}
           aspect="feature"
           priority
-          captionAlign="center"
         />
       </div>
 
@@ -96,9 +94,9 @@ export default async function ArticlePage({ params }: PageProps) {
       {/* Related Articles */}
       {relatedArticles.length > 0 && (
         <section className="page-shell mx-auto mt-20 max-w-6xl md:mt-32">
-          <p className="section-label">Related</p>
-          <h2 className="mt-4 font-serif text-2xl text-foreground md:text-3xl">
-            More to read
+          <p className="section-label">관련 글</p>
+          <h2 className="mt-3 font-serif text-2xl text-foreground md:mt-4 md:text-3xl">
+            함께 읽기
           </h2>
 
           <div className="mt-10 grid gap-10 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 lg:gap-10">
