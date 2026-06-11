@@ -101,9 +101,9 @@ export const homeFeaturedStoryDisplay = {
 
 export const siteImages = {
   hero: {
-    src: "/images/hero.jpg",
-    alt: "Coffee and afternoon light on a wooden table",
-    caption: "오후의 빛 · 커피 · 책상 위의 시간",
+    src: "/images/hero-v2.jpg",
+    alt: "A flower-lined path in soft spring light",
+    caption: "봄에서 초여름으로 · 이어지는 길",
   },
   editor: {
     src: "/images/editor.jpg",
@@ -313,7 +313,7 @@ export const articles: Article[] = [
       "낯선 도시에서, 처음으로 마음이 통하는 사람을 만났습니다.",
     category: "Essay",
     date: "2026-06-14",
-    image: "/images/editorial/places/places-neighborhood-street-dusk.jpg",
+    image: "/images/editorial/home/home-morning-tea-window.jpg",
   },
   {
     slug: "learning-again",
