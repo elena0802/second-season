@@ -313,7 +313,7 @@ export const articles: Article[] = [
       "낯선 도시에서, 처음으로 마음이 통하는 사람을 만났습니다.",
     category: "Essay",
     date: "2026-06-14",
-    image: "/images/editorial/meals/meals-two-settings-daylight.jpg",
+    image: "/images/editorial/places/places-neighborhood-street-dusk.jpg",
   },
   {
     slug: "learning-again",
@@ -322,7 +322,7 @@ export const articles: Article[] = [
       "교실 밖에서 다시 시작한 배움은 예상과 달랐습니다.",
     category: "Essay",
     date: "2026-06-18",
-    image: "/images/editorial/books/books-rereading-old-pages.jpg",
+    image: "/images/editorial/books/books-rainy-bookstore.jpg",
   },
   {
     slug: "life-changed",
@@ -331,7 +331,7 @@ export const articles: Article[] = [
       "여유가 생긴 것이 아니라, 하루를 대하는 방식이 바뀌었습니다.",
     category: "Essay",
     date: "2026-06-22",
-    image: "/images/editorial/home/home-morning-tea-window.jpg",
+    image: "/images/editorial/parks/parks-solitary-walk-path.jpg",
   },
   {
     slug: "people-to-share-meals-with",
@@ -340,7 +340,7 @@ export const articles: Article[] = [
       "혼자가 아닌 식탁에는 작은 대화가 머뭅니다.",
     category: "Essay",
     date: "2026-06-26",
-    image: "/images/editorial/meals/meals-small-restaurant-table.jpg",
+    image: "/images/editorial/meals/meals-two-settings-daylight.jpg",
   },
   {
     slug: "still-curious",
@@ -349,7 +349,7 @@ export const articles: Article[] = [
       "두 번째 계절에도 궁금함은 멈추지 않습니다.",
     category: "Essay",
     date: "2026-06-30",
-    image: "/images/editorial/seasons/seasons-second-season-beginning-flowers.jpg",
+    image: "/images/editorial/books/books-rereading-old-pages.jpg",
   },
 ];
 
