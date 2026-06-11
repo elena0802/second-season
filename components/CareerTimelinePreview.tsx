@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { milestoneTitleClassName } from "@/lib/milestoneTitle";
 import type { CareerMilestone } from "@/types/educator";
 
 type CareerTimelinePreviewProps = {
@@ -27,7 +28,12 @@ function MilestoneText({ milestone }: { milestone: CareerMilestone }) {
       <p className="section-label">
         CHAPTER {String(milestone.chapter).padStart(2, "0")}
       </p>
-      <h3 className="mt-3 font-serif text-xl leading-snug text-foreground sm:text-2xl md:mt-4 md:text-3xl">
+      <h3
+        className={milestoneTitleClassName(
+          "mt-3 font-serif text-xl leading-snug text-foreground sm:text-2xl md:mt-4 md:text-3xl",
+          milestone,
+        )}
+      >
         {milestone.title}
       </h3>
       <p className="body-calm mt-3 text-foreground/70 sm:mt-4 md:mt-5">

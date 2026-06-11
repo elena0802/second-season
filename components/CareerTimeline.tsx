@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { milestoneTitleClassName } from "@/lib/milestoneTitle";
 import type { CareerMilestone, CareerMilestoneImage } from "@/types/educator";
 
 type CareerTimelineProps = {
@@ -85,11 +86,12 @@ export default function CareerTimeline({
             </p>
 
             <h3
-              className={
+              className={milestoneTitleClassName(
                 isTeaser
                   ? "mt-3 font-serif text-xl leading-snug text-foreground sm:text-2xl"
-                  : "mt-4 font-serif text-2xl leading-snug text-foreground sm:text-3xl"
-              }
+                  : "mt-4 font-serif text-2xl leading-snug text-foreground sm:text-3xl",
+                milestone,
+              )}
             >
               {milestone.title}
             </h3>
