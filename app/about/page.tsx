@@ -21,7 +21,7 @@ export default function AboutPage() {
       <header className="page-shell mx-auto max-w-[760px] text-center">
         <p className="section-label">교직 인생</p>
 
-        <h1 className="mt-5 font-serif text-2xl leading-[1.15] tracking-[0.01em] text-foreground sm:mt-6 sm:text-3xl md:text-4xl">
+        <h1 className="mt-5 font-serif text-2xl leading-[1.5] tracking-[0.01em] text-foreground sm:mt-6 sm:text-3xl md:text-4xl">
           {educatorProfile.headlineLines[0]}
           <br />
           {educatorProfile.headlineLines[1]}
@@ -37,10 +37,8 @@ export default function AboutPage() {
         <EditorialImage
           src={educatorProfile.portrait.src}
           alt={educatorProfile.portrait.alt}
-          caption={educatorProfile.portrait.caption}
           aspect="feature"
           priority
-          captionAlign="center"
         />
       </div>
 

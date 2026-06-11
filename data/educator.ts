@@ -39,6 +39,12 @@ export const careerTimeline: CareerMilestone[] = [
     title: "첫 발령, 첫 교실",
     description:
       "처음 학생들을 만나던 날의 설렘과 긴장이 아직도 선명합니다. 교실 문을 열었을 때, 칠판 앞에 서야 한다는 사실이 무겁게 느껴졌습니다. 하지만 학생들의 첫 인사를 받는 순간, 이곳이 내가 오래 머물 공간이 될 것 같다는 생각이 들었습니다.",
+    // placeholder: /images/editorial/career/first-classroom.jpg
+    image: {
+      src: "/images/editorial/books/books-morning-desk-glasses.jpg",
+      alt: "아침 빛이 드는 책상 위의 책과 안경",
+      caption: "첫 교실 · 아침의 책상 · 교직의 시작",
+    },
   },
   {
     id: "commercial-high-school-years",
@@ -49,32 +55,30 @@ export const careerTimeline: CareerMilestone[] = [
       "젊은 교사로서 첫 경험을 쌓아가던 시간이었습니다. 아직 모든 것을 안다고 말할 수 없었지만, 매일 교실에서 배우는 것이 더 많았습니다. 학생들과 함께하며 교사라는 역할이 어떤 무게를 지니는지 조금씩 알아가기 시작했습니다.",
   },
   {
-    id: "marriage-new-beginning",
-    chapter: 4,
-    period: "가정의 시작",
-    title: "결혼과 새로운 시작",
-    description:
-      "교사로서의 삶과 가정을 함께 꾸려가기 시작했습니다. 학교와 집 사이를 오가며, 두 공간 모두에 진심을 다해야 한다는 것을 배웠습니다. 새로운 시작은 교직 생활에 또 하나의 이름을 더했습니다.",
-  },
-  {
     id: "mother-of-two",
-    chapter: 5,
+    chapter: 4,
     period: "엄마가 된 시간",
     title: "두 아이의 엄마가 되다",
     description:
-      "엄마와 교사라는 두 역할을 함께 배우기 시작한 시기였습니다. 아이를 키우면서 학부모의 마음을 조금 더 이해하게 되었고, 교실에서 만나는 학생들을 바라보는 눈도 달라졌습니다. 두 역할은 서로를 닮아 있었습니다.",
+      "결혼과 함께 가정을 꾸리고, 두 아이를 키우며 엄마와 교사라는 두 역할을 함께 배웠습니다. 가정에서의 시간은 교실에서 학생과 학부모를 더 깊이 이해하게 해주었습니다.",
   },
   {
     id: "no-leave-37-years",
-    chapter: 6,
+    chapter: 5,
     period: "37년",
     title: "휴직 없이 37년을 걷다",
     description:
-      "아이 둘을 키우며 한 번도 휴직하지 않고 교직 생활을 이어왔습니다. 쉬지 않았다는 것이 자랑스러운 일은 아니었지만, 교실을 떠나지 않고 싶었습니다. 학생들이 있는 곳에 내가 있어야 한다는 마음이 그 시간을 이어주었습니다.",
+      "아이 둘을 키우며 한 번도 휴직하지 않고 교직 생활을 이어왔습니다. 담임과 부장교사를 맡으며 바쁜 시간을 보냈지만, 학생들이 있는 교실을 떠나지 않고 싶었습니다.",
+    // placeholder: /images/editorial/career/no-leave-classroom-years.jpg
+    image: {
+      src: "/images/editorial/home/home-morning-tea-window.jpg",
+      alt: "창가 아침 차와 책상, 일상의 교육 현장을 이어가는 시간",
+      caption: "가정과 교실 사이 · 휴직 없이 이어온 37년",
+    },
   },
   {
     id: "head-teacher-years",
-    chapter: 7,
+    chapter: 6,
     period: "부장교사 시절",
     title: "부장교사로 보낸 시간",
     description:
@@ -82,7 +86,7 @@ export const careerTimeline: CareerMilestone[] = [
   },
   {
     id: "counseling-study-begins",
-    chapter: 8,
+    chapter: 7,
     period: "상담 공부",
     title: "상담 공부를 시작하다",
     description:
@@ -90,11 +94,11 @@ export const careerTimeline: CareerMilestone[] = [
   },
   {
     id: "public-middle-school-move",
-    chapter: 9,
+    chapter: 8,
     period: "학교 이동",
     title: "모두가 만류했던 공립중학교로의 이동",
     description:
-      "많은 걱정 속에서도 새로운 환경을 선택했던 용기 있는 결정이었습니다. 주변에서 만류하는 목소리가 있었지만, 새로운 학교에서 다시 시작하고 싶었습니다. 그 선택이 이후의 길—진로교사, 상담, 그리고 다시 만난 학생들—로 이어질 줄은 몰랐습니다.",
+      "많은 걱정 속에서도 새로운 환경을 선택했던 용기 있는 결정이었습니다. 주변에서 만류하는 목소리가 있었지만, 새로운 학교에서 다시 시작하고 싶었습니다. 그 선택이 이후의 길—진로교사, 상담, 그리고 다시 만난 학생들—로 이어질 줄은 몰랐습니다. 중학생들은 고등학생과 달랐습니다. 더 가까이에서 학생들의 변화를 보게 되었고, 오히려 중학생들에게서 많은 것을 배우게 되었습니다. 공립중학교로의 이동은 단순한 직장 이동이 아니라, 교육관이 확장되는 계기였습니다.",
     // placeholder: /images/editorial/career/middle-school-hallway.jpg
     image: {
       src: "/images/editorial/places/places-neighborhood-street-dusk.jpg",
@@ -103,16 +107,8 @@ export const careerTimeline: CareerMilestone[] = [
     },
   },
   {
-    id: "learning-with-middle-schoolers",
-    chapter: 10,
-    period: "공립중학교",
-    title: "중학생들과 함께 배우다",
-    description:
-      "새로운 학교와 새로운 학생들을 만나며 배운 것이 많았습니다. 중학생의 고민은 겉으로 드러나지 않는 경우가 많았고, 그만큼 기다려야 하는 시간도 길었습니다. 학생들에게서 배운 것이 가르친 것보다 더 많았던 시기입니다.",
-  },
-  {
     id: "becoming-career-teacher",
-    chapter: 11,
+    chapter: 9,
     period: "진로교사",
     title: "진로교사가 되다",
     description:
@@ -120,7 +116,7 @@ export const careerTimeline: CareerMilestone[] = [
   },
   {
     id: "pondering-students-future",
-    chapter: 12,
+    chapter: 10,
     period: "진로교사로서",
     title: "학생들의 미래를 함께 고민하다",
     description:
@@ -128,7 +124,7 @@ export const careerTimeline: CareerMilestone[] = [
   },
   {
     id: "green-service-medal",
-    chapter: 13,
+    chapter: 11,
     period: "37년을 돌아보며",
     title: "녹조근정훈장을 받다",
     description:
@@ -142,17 +138,11 @@ export const careerTimeline: CareerMilestone[] = [
   },
   {
     id: "students-returned",
-    chapter: 14,
+    chapter: 12,
     period: "지금도 이어지는",
     title: "학생들이 다시 찾아오다",
     description:
       "상담실을 찾아왔던 학생들이 자신의 길을 찾고 다시 선생님을 찾아온 순간들이 있었습니다. 졸업한 뒤에도 연락을 주는 학생, 진로를 바꾸고 다시 상담을 요청하는 학생—교직 인생은 그런 만남으로 이어지고 있습니다. 끝나지 않았고, 아직도 이어지고 있습니다.",
-    // placeholder: /images/editorial/career/students-returned-letter.jpg
-    image: {
-      src: "/images/editorial/meals/meals-two-settings-daylight.jpg",
-      alt: "햇살 아래 마주 놓인 두 잔의 차와 식사 자리",
-      caption: "졸업 후에도 이어지는 대화 · 다시 찾아온 학생들",
-    },
   },
 ];
 
