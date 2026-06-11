@@ -19,7 +19,27 @@ export type JournalIssue = {
   slugs: string[];
 };
 
+export const homeRecentPostSlugs: string[] = [
+  "seoul-first-friends",
+  "learning-again",
+  "life-changed",
+  "people-to-share-meals-with",
+  "still-curious",
+];
+
 export const journalIssues: JournalIssue[] = [
+  {
+    label: "Second Season",
+    title: "두 번째 계절",
+    description: "정년 이후, 다시 시작된 일상의 기록.",
+    slugs: [
+      "seoul-first-friends",
+      "learning-again",
+      "life-changed",
+      "people-to-share-meals-with",
+      "still-curious",
+    ],
+  },
   {
     label: "Teaching Life",
     title: "교직 인생",
@@ -286,6 +306,51 @@ export const articles: Article[] = [
     image: "/images/editorial/career/green-medal-prize.jpg",
     chapterId: "green-service-medal",
   },
+  {
+    slug: "seoul-first-friends",
+    title: "서울에 와서 처음 친구를 사귀던 날",
+    excerpt:
+      "낯선 도시에서, 처음으로 마음이 통하는 사람을 만났습니다.",
+    category: "Essay",
+    date: "2026-06-14",
+    image: "/images/editorial/meals/meals-two-settings-daylight.jpg",
+  },
+  {
+    slug: "learning-again",
+    title: "학생이 아닌 사람들과 다시 배우기 시작했다",
+    excerpt:
+      "교실 밖에서 다시 시작한 배움은 예상과 달랐습니다.",
+    category: "Essay",
+    date: "2026-06-18",
+    image: "/images/editorial/books/books-rereading-old-pages.jpg",
+  },
+  {
+    slug: "life-changed",
+    title: "시간이 생긴 것이 아니라 삶이 달라졌다",
+    excerpt:
+      "여유가 생긴 것이 아니라, 하루를 대하는 방식이 바뀌었습니다.",
+    category: "Essay",
+    date: "2026-06-22",
+    image: "/images/editorial/home/home-morning-tea-window.jpg",
+  },
+  {
+    slug: "people-to-share-meals-with",
+    title: "함께 밥 먹는 사람이 있다는 것",
+    excerpt:
+      "혼자가 아닌 식탁에는 작은 대화가 머뭅니다.",
+    category: "Essay",
+    date: "2026-06-26",
+    image: "/images/editorial/meals/meals-small-restaurant-table.jpg",
+  },
+  {
+    slug: "still-curious",
+    title: "아직도 배우고 싶은 것이 많다",
+    excerpt:
+      "두 번째 계절에도 궁금함은 멈추지 않습니다.",
+    category: "Essay",
+    date: "2026-06-30",
+    image: "/images/editorial/seasons/seasons-second-season-beginning-flowers.jpg",
+  },
 ];
 
 export function getArticleBySlug(slug: string): Article | undefined {
@@ -300,6 +365,10 @@ export function getArticlesBySlugs(slugs: string[]): Article[] {
   return slugs
     .map((slug) => getArticleBySlug(slug))
     .filter((article): article is Article => article !== undefined);
+}
+
+export function getHomeRecentPosts(): Article[] {
+  return getArticlesBySlugs(homeRecentPostSlugs);
 }
 
 export function getFeaturedArticle(): Article {

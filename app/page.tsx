@@ -4,8 +4,8 @@ import CareerTimelinePreview from "@/components/CareerTimelinePreview";
 import EditorialImage from "@/components/EditorialImage";
 import NewsletterSubscribeForm from "@/components/NewsletterSubscribeForm";
 import {
-  articles,
   getFeaturedArticle,
+  getHomeRecentPosts,
   homeFeaturedStoryDisplay,
   siteImages,
 } from "@/data/articles";
@@ -14,10 +14,10 @@ import { enrichArticle, enrichArticles } from "@/lib/content";
 
 export default function Home() {
   const featured = enrichArticle(getFeaturedArticle());
-  const enrichedArticles = enrichArticles(articles);
+  const recentPosts = enrichArticles(getHomeRecentPosts());
   const [firstRow, secondRow] = [
-    enrichedArticles.slice(0, 2),
-    enrichedArticles.slice(2, 5),
+    recentPosts.slice(0, 2),
+    recentPosts.slice(2, 5),
   ];
   const timelinePreview = getHomeTimelinePreview();
 
