@@ -21,6 +21,12 @@ export const educatorProfile: EducatorProfile = {
     alt: "Hands turning the pages of a book by a window",
     caption: "창가에서 책을 넘기는 오후",
   },
+  homeTeaser: {
+    headline: "교직 인생",
+    subheadline:
+      "첫 발령부터 진로교사, 그리고 다시 찾아온 학생들까지.\n37년의 시간을 기록했습니다.",
+    cta: "전체 타임라인 보기 →",
+  },
 };
 
 export const careerTimeline: CareerMilestone[] = [
@@ -146,33 +152,34 @@ export const careerTimeline: CareerMilestone[] = [
   },
 ];
 
-export const homeFeaturedTimelineIds: string[] = [
+export const homeTimelinePreviewIds: string[] = [
   "first-classroom",
   "no-leave-37-years",
   "public-middle-school-move",
-  "becoming-career-teacher",
   "green-service-medal",
-  "students-returned",
 ];
 
 export const educatorData: EducatorData = {
   profile: educatorProfile,
   careerTimeline,
-  homeFeaturedTimelineIds,
+  homeTimelinePreviewIds,
 };
 
 export function getCareerTimeline(): CareerMilestone[] {
   return [...careerTimeline].sort((a, b) => a.chapter - b.chapter);
 }
 
-export function getHomeFeaturedTimeline(): CareerMilestone[] {
+export function getHomeTimelinePreview(): CareerMilestone[] {
   const timelineById = new Map(
     careerTimeline.map((milestone) => [milestone.id, milestone]),
   );
 
-  return homeFeaturedTimelineIds
+  return homeTimelinePreviewIds
     .map((id) => timelineById.get(id))
-    .filter((milestone): milestone is CareerMilestone => milestone !== undefined);
+    .filter(
+      (milestone): milestone is CareerMilestone =>
+        milestone !== undefined && milestone.image !== undefined,
+    );
 }
 
 export function getMilestoneById(id: string): CareerMilestone | undefined {

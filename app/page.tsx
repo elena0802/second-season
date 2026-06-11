@@ -1,18 +1,16 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
-import CareerTimeline from "@/components/CareerTimeline";
+import CareerTimelinePreview from "@/components/CareerTimelinePreview";
 import EditorialImage from "@/components/EditorialImage";
 import NewsletterSubscribeForm from "@/components/NewsletterSubscribeForm";
 import {
   articles,
   getFeaturedArticle,
+  homeFeaturedStoryDisplay,
   siteImages,
   tagline,
 } from "@/data/articles";
-import {
-  educatorProfile,
-  getHomeFeaturedTimeline,
-} from "@/data/educator";
+import { educatorProfile, getHomeTimelinePreview } from "@/data/educator";
 import { enrichArticle, enrichArticles } from "@/lib/content";
 
 export default function Home() {
@@ -22,7 +20,7 @@ export default function Home() {
     enrichedArticles.slice(0, 2),
     enrichedArticles.slice(2, 5),
   ];
-  const featuredTimeline = getHomeFeaturedTimeline();
+  const timelinePreview = getHomeTimelinePreview();
 
   return (
     <>
@@ -69,9 +67,11 @@ export default function Home() {
             well-spent days.
           </p>
           <p className="body-calm mt-8 text-foreground/65">
-            35년의 교직 생활 이후에도,
+            37년 동안 교실에서 학생들과 함께 걸어온 선생님이
             <br />
-            여전히 아름다운 것을 발견하는 한 사람의 기록입니다.
+            기록하는 저널입니다. 첫 번째 계절은 교단의 시간들,
+            <br />
+            두 번째 계절은 아직도 아름다운 것을 발견하는 일상입니다.
           </p>
         </div>
       </section>
@@ -89,13 +89,13 @@ export default function Home() {
           <div className="mx-auto mt-10 max-w-3xl text-center md:mt-14">
             <p className="section-label">Featured Story</p>
             <h2 className="mt-5 font-serif text-3xl leading-tight text-foreground transition-colors group-hover:text-accent sm:text-4xl md:text-5xl lg:text-6xl">
-              {featured.title}
+              {homeFeaturedStoryDisplay.title}
             </h2>
             <p className="body-calm mt-6 whitespace-pre-line text-foreground/65 sm:mt-8">
-              {featured.subtitle}
+              {homeFeaturedStoryDisplay.subtitle}
             </p>
             <p className="section-label mt-8 text-accent sm:mt-10">
-              Read the story
+              {homeFeaturedStoryDisplay.cta}
             </p>
           </div>
         </Link>
@@ -143,10 +143,10 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-center">
             <p className="section-label text-foreground/50">Places</p>
             <h2 className="mt-5 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
-              Places Worth Remembering
+              함께 나누고 싶은 곳들
             </h2>
             <p className="body-calm mt-8 text-foreground/70 sm:mt-10">
-              좋은 장소는 단순히 예쁜 곳이 아니라,
+              좋은 장소는 예쁜 곳이 아니라,
               <br />
               다시 누군가와 가고 싶은 곳입니다.
             </p>
@@ -170,31 +170,25 @@ export default function Home() {
 
       {/* 교직 인생 */}
       <section className="page-shell mx-auto max-w-7xl py-16 md:py-28">
-        <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
-          <div className="min-w-0 lg:col-span-5">
-            <EditorialImage
-              src={educatorProfile.portrait.src}
-              alt={educatorProfile.portrait.alt}
-              caption={educatorProfile.portrait.caption}
-              aspect="editor"
-            />
-          </div>
-          <div className="min-w-0 lg:col-span-7 lg:pt-6">
-            <p className="section-label">교직 인생</p>
-            <h2 className="mt-5 font-serif text-2xl leading-snug text-foreground sm:text-3xl md:text-4xl">
-              {educatorProfile.headline}
-            </h2>
-            <p className="body-calm mt-6 whitespace-pre-line sm:mt-8">
-              {educatorProfile.subheadline}
-            </p>
-            <CareerTimeline milestones={featuredTimeline} variant="teaser" />
-            <Link
-              href="/about"
-              className="section-label mt-8 inline-block text-accent transition-colors hover:text-foreground sm:mt-10"
-            >
-              교직 인생 보기
-            </Link>
-          </div>
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="section-label">교직 인생</p>
+          <h2 className="mt-5 font-serif text-2xl leading-snug text-foreground sm:text-3xl md:text-4xl">
+            {educatorProfile.homeTeaser.headline}
+          </h2>
+          <p className="body-calm mt-6 whitespace-pre-line text-foreground/70 sm:mt-8">
+            {educatorProfile.homeTeaser.subheadline}
+          </p>
+        </div>
+
+        <CareerTimelinePreview milestones={timelinePreview} />
+
+        <div className="mt-16 text-center md:mt-24">
+          <Link
+            href="/about"
+            className="inline-block font-serif text-2xl text-foreground transition-colors hover:text-accent sm:text-3xl md:text-4xl"
+          >
+            {educatorProfile.homeTeaser.cta}
+          </Link>
         </div>
       </section>
 

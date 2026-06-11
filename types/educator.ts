@@ -10,6 +10,12 @@ export type CareerMilestoneImage = {
   caption?: string;
 };
 
+export type EducatorHomeTeaser = {
+  headline: string;
+  subheadline: string;
+  cta: string;
+};
+
 export type EducatorProfile = {
   name: string;
   honorific: string;
@@ -21,6 +27,7 @@ export type EducatorProfile = {
   timelineSectionTitle: string;
   openingNarrative: string;
   portrait: EducatorPortrait;
+  homeTeaser: EducatorHomeTeaser;
 };
 
 export type CareerMilestone = {
@@ -35,5 +42,5 @@ export type CareerMilestone = {
 export type EducatorData = {
   profile: EducatorProfile;
   careerTimeline: CareerMilestone[];
-  homeFeaturedTimelineIds: string[];
+  homeTimelinePreviewIds: string[];
 };

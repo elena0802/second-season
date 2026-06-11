@@ -59,6 +59,14 @@ export const journalIssues: JournalIssue[] = [
 
 export const tagline = "The second season begins with curiosity.";
 
+/** Home Featured Story display — journal article metadata unchanged */
+export const homeFeaturedStoryDisplay = {
+  title: "두 번째 계절이 시작된 날",
+  subtitle:
+    "37년 동안 교단에 있었던 시간 뒤,\n조금 다른 하루가 시작되었습니다.",
+  cta: "두 번째 계절의 이야기 →",
+};
+
 export const siteImages = {
   hero: {
     src: "/images/hero.jpg",
