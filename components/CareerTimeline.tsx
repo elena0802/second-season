@@ -80,15 +80,7 @@ export default function CareerTimeline({
             )}
 
             <p className="section-label">
-              {isTeaser ? (
-                <>
-                  {String(milestone.chapter).padStart(2, "0")} · {milestone.period}
-                </>
-              ) : (
-                <>
-                  Chapter {milestone.chapter} · {milestone.period}
-                </>
-              )}
+              CHAPTER {String(milestone.chapter).padStart(2, "0")}
             </p>
 
             <h3

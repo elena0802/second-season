@@ -11,7 +11,7 @@ type EditorialImageProps = {
 };
 
 const aspectClasses = {
-  hero: "aspect-[4/5] sm:aspect-[3/4]",
+  hero: "aspect-[3/2]",
   feature: "aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1]",
   card: "aspect-[4/5]",
   wide: "aspect-[21/9] md:aspect-[3/1]",
@@ -26,7 +26,7 @@ const captionAlignClasses = {
 };
 
 const sizeHints = {
-  hero: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw",
+  hero: "(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 32vw",
   feature: "(max-width: 768px) 100vw, 90vw",
   card: "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw",
   wide: "100vw",

@@ -25,7 +25,7 @@ function MilestoneText({ milestone }: { milestone: CareerMilestone }) {
   return (
     <div>
       <p className="section-label">
-        {String(milestone.chapter).padStart(2, "0")} · {milestone.period}
+        CHAPTER {String(milestone.chapter).padStart(2, "0")}
       </p>
       <h3 className="mt-3 font-serif text-xl leading-snug text-foreground sm:text-2xl md:mt-4 md:text-3xl">
         {milestone.title}

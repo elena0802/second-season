@@ -5,11 +5,13 @@ import type { ArticleDisplay } from "@/lib/content";
 type ArticleCardProps = {
   article: ArticleDisplay;
   variant?: "default" | "magazine" | "lead";
+  hideCaption?: boolean;
 };
 
 export default function ArticleCard({
   article,
   variant = "default",
+  hideCaption = false,
 }: ArticleCardProps) {
   if (variant === "lead") {
     return (
@@ -18,7 +20,7 @@ export default function ArticleCard({
           <EditorialImage
             src={article.image}
             alt={article.imageAlt}
-            caption={article.imageCaption}
+            caption={hideCaption ? undefined : article.imageCaption}
             aspect="feature"
           />
           <div className="mt-8 max-w-xl">
@@ -42,7 +44,7 @@ export default function ArticleCard({
           <EditorialImage
             src={article.image}
             alt={article.imageAlt}
-            caption={article.imageCaption}
+            caption={hideCaption ? undefined : article.imageCaption}
             aspect="card"
           />
           <div className="mt-6">
@@ -62,7 +64,7 @@ export default function ArticleCard({
         <EditorialImage
           src={article.image}
           alt={article.imageAlt}
-          caption={article.imageCaption}
+          caption={hideCaption ? undefined : article.imageCaption}
           aspect="card"
         />
         <div className="mt-6">

@@ -8,7 +8,6 @@ import {
   getFeaturedArticle,
   homeFeaturedStoryDisplay,
   siteImages,
-  tagline,
 } from "@/data/articles";
 import { educatorProfile, getHomeTimelinePreview } from "@/data/educator";
 import { enrichArticle, enrichArticles } from "@/lib/content";
@@ -28,16 +27,15 @@ export default function Home() {
       <section className="page-shell mx-auto max-w-7xl py-12 md:py-20 lg:py-24">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
           <div className="min-w-0 lg:col-span-5 lg:pt-10">
-            <p className="font-serif text-2xl tracking-[0.12em] text-foreground sm:text-3xl md:text-4xl md:tracking-[0.14em]">
-              SECOND SEASON
+            <p className="section-label">SECOND SEASON</p>
+            <h1 className="mt-5 font-serif text-2xl leading-snug text-foreground sm:text-3xl md:text-4xl">
+              한 교사의 두 번째 계절
+            </h1>
+            <p className="body-calm mt-6 text-foreground/80 sm:mt-8">
+              교단에서 배운 것들,
+              <br />
+              그리고 여전히 아름다운 것을 발견하는 일상을 기록합니다.
             </p>
-            <p className="mt-6 font-serif text-lg leading-relaxed text-foreground/80 sm:text-xl md:text-2xl">
-              {tagline}
-            </p>
-            <div className="body-calm mt-10 space-y-4">
-              <p>좋은 장소와 시간을 기록합니다.</p>
-              <p>삶의 두 번째 계절에서 발견한 것들을 나눕니다.</p>
-            </div>
             <Link
               href="/journal"
               className="mt-10 inline-block border border-foreground/20 px-8 py-3.5 text-xs uppercase tracking-[0.28em] text-foreground transition-colors hover:border-accent hover:text-accent sm:mt-12 sm:px-10 sm:tracking-[0.3em]"
@@ -46,55 +44,38 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="min-w-0 lg:col-span-7">
-            <EditorialImage
-              src={siteImages.hero.src}
-              alt={siteImages.hero.alt}
-              caption={siteImages.hero.caption}
-              aspect="hero"
-              priority
-              captionAlign="right"
-            />
+          <div className="min-w-0 lg:col-span-7 lg:flex lg:items-start lg:justify-end lg:pt-10">
+            <div className="w-full max-w-xl lg:max-w-lg">
+              <EditorialImage
+                src={siteImages.hero.src}
+                alt={siteImages.hero.alt}
+                aspect="hero"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Intro Statement */}
-      <section className="border-y border-muted/50 py-16 md:py-28">
-        <div className="page-shell mx-auto max-w-2xl text-center">
-          <p className="body-calm">
-            Second Season is a quiet journal of places, moments, and
-            well-spent days.
-          </p>
-          <p className="body-calm mt-8 text-foreground/65">
-            37년 동안 교실에서 학생들과 함께 걸어온 선생님이
-            <br />
-            기록하는 저널입니다. 첫 번째 계절은 교단의 시간들,
-            <br />
-            두 번째 계절은 아직도 아름다운 것을 발견하는 일상입니다.
-          </p>
-        </div>
-      </section>
-
       {/* Featured Story */}
-      <section className="page-shell mx-auto max-w-7xl py-16 md:py-28">
+      <section className="page-shell mx-auto max-w-7xl py-12 md:py-20">
         <Link href={`/journal/${featured.slug}`} className="group block min-w-0">
-          <EditorialImage
-            src={featured.image}
-            alt={featured.imageAlt}
-            caption={featured.imageCaption}
-            aspect="feature"
-            captionAlign="center"
-          />
-          <div className="mx-auto mt-10 max-w-3xl text-center md:mt-14">
+          <div className="mx-auto max-w-5xl">
+            <EditorialImage
+              src={featured.image}
+              alt={featured.imageAlt}
+              aspect="feature"
+            />
+          </div>
+          <div className="mx-auto mt-8 max-w-2xl text-center md:mt-10">
             <p className="section-label">Featured Story</p>
-            <h2 className="mt-5 font-serif text-3xl leading-tight text-foreground transition-colors group-hover:text-accent sm:text-4xl md:text-5xl lg:text-6xl">
+            <h2 className="mt-4 font-serif text-2xl leading-tight text-foreground transition-colors group-hover:text-accent sm:text-3xl md:text-4xl lg:text-5xl">
               {homeFeaturedStoryDisplay.title}
             </h2>
-            <p className="body-calm mt-6 whitespace-pre-line text-foreground/65 sm:mt-8">
+            <p className="body-calm mt-5 whitespace-pre-line text-foreground/65 sm:mt-6">
               {homeFeaturedStoryDisplay.subtitle}
             </p>
-            <p className="section-label mt-8 text-accent sm:mt-10">
+            <p className="section-label mt-6 text-accent sm:mt-8">
               {homeFeaturedStoryDisplay.cta}
             </p>
           </div>
@@ -121,7 +102,12 @@ export default function Home() {
         {firstRow.length > 0 && (
           <div className="mb-12 grid gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-14">
             {firstRow.map((article) => (
-              <ArticleCard key={article.slug} article={article} variant="lead" />
+              <ArticleCard
+                key={article.slug}
+                article={article}
+                variant="lead"
+                hideCaption
+              />
             ))}
           </div>
         )}
@@ -132,6 +118,7 @@ export default function Home() {
               key={article.slug}
               article={article}
               variant="magazine"
+              hideCaption
             />
           ))}
         </div>
@@ -158,9 +145,7 @@ export default function Home() {
                 <EditorialImage
                   src={place.src}
                   alt={place.alt}
-                  caption={place.caption}
                   aspect="card"
-                  captionAlign="center"
                 />
               </div>
             ))}
