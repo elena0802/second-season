@@ -6,7 +6,7 @@ const navItems = [
   { href: "/journeys", label: "Journeys" },
   { href: "/essays", label: "Essays" },
   { href: "/seasons", label: "Seasons" },
-  { href: "/about", label: "About" },
+  { href: "/about", label: "교직 인생" },
 ];
 
 export default function Footer() {

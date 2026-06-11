@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
+import CareerTimeline from "@/components/CareerTimeline";
 import EditorialImage from "@/components/EditorialImage";
 import NewsletterSubscribeForm from "@/components/NewsletterSubscribeForm";
 import {
@@ -8,6 +9,10 @@ import {
   siteImages,
   tagline,
 } from "@/data/articles";
+import {
+  educatorProfile,
+  getHomeFeaturedTimeline,
+} from "@/data/educator";
 import { enrichArticle, enrichArticles } from "@/lib/content";
 
 export default function Home() {
@@ -17,6 +22,7 @@ export default function Home() {
     enrichedArticles.slice(0, 2),
     enrichedArticles.slice(2, 5),
   ];
+  const featuredTimeline = getHomeFeaturedTimeline();
 
   return (
     <>
@@ -162,45 +168,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About the Editor */}
+      {/* 교직 인생 */}
       <section className="page-shell mx-auto max-w-7xl py-16 md:py-28">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="min-w-0 lg:col-span-5">
             <EditorialImage
-              src={siteImages.editor.src}
-              alt={siteImages.editor.alt}
-              caption={siteImages.editor.caption}
+              src={educatorProfile.portrait.src}
+              alt={educatorProfile.portrait.alt}
+              caption={educatorProfile.portrait.caption}
               aspect="editor"
             />
           </div>
           <div className="min-w-0 lg:col-span-7 lg:pt-6">
-            <p className="section-label">About the Editor</p>
+            <p className="section-label">교직 인생</p>
             <h2 className="mt-5 font-serif text-2xl leading-snug text-foreground sm:text-3xl md:text-4xl">
-              A life spent in the classroom,
-              <br />
-              now spent in discovery.
+              {educatorProfile.headline}
             </h2>
-            <div className="body-calm mt-8 space-y-6 sm:mt-10">
-              <p>
-                35년 동안 중학교 교실에서 학생들의 미래를 함께 고민했습니다.
-                진로 상담, 아침 조회, 졸업식—그 모든 순간이 소중했습니다.
-              </p>
-              <p>
-                은퇴 후에는 좋은 장소, 조용한 여행, 오래 두고 싶은 책을
-                기록하기 시작했습니다. 화려한 삶이 아니라, 신중하게 고른
-                순간들을 나눕니다.
-              </p>
-              <p className="text-foreground/55">
-                This person spent 35 years helping students discover their
-                future. Today, they document places, moments, and thoughtful
-                living.
-              </p>
-            </div>
+            <p className="body-calm mt-6 sm:mt-8">{educatorProfile.subheadline}</p>
+            <CareerTimeline milestones={featuredTimeline} variant="teaser" />
             <Link
               href="/about"
               className="section-label mt-8 inline-block text-accent transition-colors hover:text-foreground sm:mt-10"
             >
-              More about Second Season
+              교직 인생 보기
             </Link>
           </div>
         </div>
