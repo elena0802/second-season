@@ -10,7 +10,9 @@ export type EducatorProfile = {
   role: string;
   yearsOfService: number;
   headline: string;
+  headlineLines: [string, string];
   subheadline: string;
+  timelineSectionTitle: string;
   openingNarrative: string;
   portrait: EducatorPortrait;
 };

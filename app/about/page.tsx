@@ -21,11 +21,13 @@ export default function AboutPage() {
       <header className="page-shell mx-auto max-w-[760px]">
         <p className="section-label">교직 인생</p>
 
-        <h1 className="mt-5 font-serif text-3xl leading-[1.15] tracking-[0.01em] text-foreground sm:mt-6 sm:text-4xl md:text-5xl">
-          {educatorProfile.headline}
+        <h1 className="mt-5 font-serif text-2xl leading-[1.15] tracking-[0.01em] text-foreground sm:mt-6 sm:text-3xl md:text-4xl">
+          {educatorProfile.headlineLines[0]}
+          <br />
+          {educatorProfile.headlineLines[1]}
         </h1>
 
-        <p className="body-calm mt-6 text-foreground/65 sm:mt-8">
+        <p className="body-calm mt-6 whitespace-pre-line text-foreground/65 sm:mt-8">
           {educatorProfile.subheadline}
         </p>
       </header>
@@ -47,7 +49,11 @@ export default function AboutPage() {
       </div>
 
       <div className="page-shell mx-auto max-w-[760px]">
-        <CareerTimeline milestones={timeline} variant="full" />
+        <CareerTimeline
+          milestones={timeline}
+          variant="full"
+          sectionTitle={educatorProfile.timelineSectionTitle}
+        />
       </div>
 
       {/* Closing */}
@@ -62,7 +68,7 @@ export default function AboutPage() {
             href="/journal/after-35-years-teaching"
             className="mt-8 inline-block font-serif text-xl text-foreground transition-colors hover:text-accent sm:mt-10 sm:text-2xl md:text-3xl"
           >
-            35년 교직 생활 이후 읽기 →
+            그리고, 그 이후의 이야기 →
           </Link>
         </div>
       </div>

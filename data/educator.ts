@@ -9,9 +9,11 @@ export const educatorProfile: EducatorProfile = {
   honorific: "선생님",
   role: "중학교 진로교사",
   yearsOfService: 37,
-  headline: "37년, 교실에서",
+  headline: "37년 동안 학생들과 함께 성장한 교사의 기록",
+  headlineLines: ["37년 동안 학생들과", "함께 성장한 교사의 기록"],
   subheadline:
-    "학생들의 길을 함께 고민하던 시간을 기록합니다.",
+    "교단에서 배운 것들,\n그리고 앞으로도 함께 배우고 싶은 이야기들.",
+  timelineSectionTitle: "교단의 시간들",
   openingNarrative:
     "이 페이지는 상을 모으거나 이력을 나열하기 위한 곳이 아닙니다. 37년 동안 교실에서 보낸 시간—첫 발령, 상업고의 젊은 날, 공립중학교의 진로교사, 그리고 다시 찾아온 학생들—을 하나의 교직 인생으로 남기기 위해 만들었습니다. 끝나는 이야기가 아니라, 아직 이어지고 있는 이야기입니다.",
   portrait: {

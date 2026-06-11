@@ -184,7 +184,9 @@ export default function Home() {
             <h2 className="mt-5 font-serif text-2xl leading-snug text-foreground sm:text-3xl md:text-4xl">
               {educatorProfile.headline}
             </h2>
-            <p className="body-calm mt-6 sm:mt-8">{educatorProfile.subheadline}</p>
+            <p className="body-calm mt-6 whitespace-pre-line sm:mt-8">
+              {educatorProfile.subheadline}
+            </p>
             <CareerTimeline milestones={featuredTimeline} variant="teaser" />
             <Link
               href="/about"

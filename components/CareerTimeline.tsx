@@ -3,11 +3,13 @@ import type { CareerMilestone } from "@/types/educator";
 type CareerTimelineProps = {
   milestones: CareerMilestone[];
   variant?: "full" | "teaser";
+  sectionTitle?: string;
 };
 
 export default function CareerTimeline({
   milestones,
   variant = "full",
+  sectionTitle,
 }: CareerTimelineProps) {
   const isTeaser = variant === "teaser";
 
@@ -20,7 +22,7 @@ export default function CareerTimeline({
         <div className="mb-10 md:mb-14">
           <p className="section-label">Timeline</p>
           <h2 className="mt-5 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">
-            37년의 기록
+            {sectionTitle}
           </h2>
         </div>
       )}
