@@ -27,9 +27,9 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="page-shell mx-auto max-w-7xl py-12 md:py-20 lg:py-24">
-        <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
-          <div className="min-w-0 lg:col-span-6 lg:pt-10">
+      <section className="page-shell mx-auto max-w-7xl py-12 pb-16 md:py-20 lg:py-24">
+        <div className="grid items-start gap-8 md:gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="order-2 min-w-0 lg:order-1 lg:col-span-6 lg:pt-10">
             <p className="section-label">SECOND SEASON</p>
             <h1 className="mt-5 font-serif text-3xl leading-snug text-foreground sm:text-4xl md:text-5xl">
               박옥주 교사의
@@ -46,7 +46,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="min-w-0 lg:col-span-6 lg:flex lg:items-start lg:justify-end lg:pt-10">
+          <div className="order-1 min-w-0 lg:order-2 lg:col-span-6 lg:flex lg:items-start lg:justify-end lg:pt-10">
             <div className="w-full max-w-xl lg:max-w-lg">
               <EditorialImage
                 src={siteImages.hero.src}
@@ -86,16 +86,19 @@ export default function Home() {
 
       {/* Latest Journal */}
       <section className="page-shell mx-auto max-w-7xl py-16 md:py-28">
-        <div className="mb-12 flex flex-col gap-4 md:mb-16 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="section-label">Latest Journal</p>
-            <h2 className="mt-4 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">
+        <div className="mb-12 md:mb-16">
+          <p className="section-label">Latest Journal</p>
+          <div className="mt-4 flex items-end justify-between gap-4 md:mt-5">
+            <h2 className="min-w-0 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">
               최근 글
             </h2>
+            <Link
+              href="/journal"
+              className="home-btn inline-flex min-h-11 shrink-0 items-center justify-center px-5 py-3 text-base md:min-h-0 md:px-7 md:py-3 md:text-[1rem]"
+            >
+              전체보기 →
+            </Link>
           </div>
-          <Link href="/journal" className="home-btn shrink-0">
-            전체보기 →
-          </Link>
         </div>
 
         {firstRow.length > 0 && (
