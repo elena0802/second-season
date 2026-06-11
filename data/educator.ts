@@ -95,6 +95,12 @@ export const careerTimeline: CareerMilestone[] = [
     title: "모두가 만류했던 공립중학교로의 이동",
     description:
       "많은 걱정 속에서도 새로운 환경을 선택했던 용기 있는 결정이었습니다. 주변에서 만류하는 목소리가 있었지만, 새로운 학교에서 다시 시작하고 싶었습니다. 그 선택이 이후의 길—진로교사, 상담, 그리고 다시 만난 학생들—로 이어질 줄은 몰랐습니다.",
+    // placeholder: /images/editorial/career/middle-school-hallway.jpg
+    image: {
+      src: "/images/editorial/places/places-neighborhood-street-dusk.jpg",
+      alt: "조용한 골목과 저녁빛이 드는 학교 근처 거리",
+      caption: "새로운 학교 · 낯선 동네 · 다시 시작하는 길",
+    },
   },
   {
     id: "learning-with-middle-schoolers",
@@ -127,6 +133,12 @@ export const careerTimeline: CareerMilestone[] = [
     title: "녹조근정훈장을 받다",
     description:
       "37년 교직 인생을 돌아보며 받은 가장 뜻깊은 순간이었습니다. 상을 받는 것이 교직의 목적은 아니었지만, 오래 걸어온 길을 돌아볼 수 있는 시간이 되었습니다. 그날 떠올린 것은 상장보다 교실과 상담실의 기억이었습니다.",
+    // placeholder: /images/editorial/career/green-service-medal-ceremony.jpg
+    image: {
+      src: "/images/after-teaching.jpg",
+      alt: "책상 위 펼쳐진 책과 안경, 오후의 고요한 빛",
+      caption: "37년을 돌아보는 오후 · 상장보다 먼저 떠오른 교실",
+    },
   },
   {
     id: "students-returned",
@@ -135,6 +147,12 @@ export const careerTimeline: CareerMilestone[] = [
     title: "학생들이 다시 찾아오다",
     description:
       "상담실을 찾아왔던 학생들이 자신의 길을 찾고 다시 선생님을 찾아온 순간들이 있었습니다. 졸업한 뒤에도 연락을 주는 학생, 진로를 바꾸고 다시 상담을 요청하는 학생—교직 인생은 그런 만남으로 이어지고 있습니다. 끝나지 않았고, 아직도 이어지고 있습니다.",
+    // placeholder: /images/editorial/career/students-returned-letter.jpg
+    image: {
+      src: "/images/editorial/meals/meals-two-settings-daylight.jpg",
+      alt: "햇살 아래 마주 놓인 두 잔의 차와 식사 자리",
+      caption: "졸업 후에도 이어지는 대화 · 다시 찾아온 학생들",
+    },
   },
 ];
 

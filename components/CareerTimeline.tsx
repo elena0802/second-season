@@ -1,10 +1,43 @@
-import type { CareerMilestone } from "@/types/educator";
+import Image from "next/image";
+import type { CareerMilestone, CareerMilestoneImage } from "@/types/educator";
 
 type CareerTimelineProps = {
   milestones: CareerMilestone[];
   variant?: "full" | "teaser";
   sectionTitle?: string;
 };
+
+function TimelineMilestoneImage({
+  image,
+  isTeaser,
+}: {
+  image: CareerMilestoneImage;
+  isTeaser: boolean;
+}) {
+  return (
+    <div
+      className={
+        isTeaser
+          ? "mb-5 max-w-xs sm:mb-6 sm:max-w-sm"
+          : "mb-6 max-w-sm sm:mb-8 sm:max-w-md"
+      }
+    >
+      <div className="relative aspect-[3/2] w-full overflow-hidden">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          sizes={
+            isTeaser
+              ? "(max-width: 640px) 80vw, 20rem"
+              : "(max-width: 640px) 90vw, 28rem"
+          }
+          className="object-cover"
+        />
+      </div>
+    </div>
+  );
+}
 
 export default function CareerTimeline({
   milestones,
@@ -41,6 +74,10 @@ export default function CareerTimeline({
               className="absolute -left-[calc(1.5rem+5px)] top-1.5 h-2.5 w-2.5 rounded-full border border-foreground/20 bg-background sm:-left-[calc(2rem+5px)]"
               aria-hidden
             />
+
+            {milestone.image && (
+              <TimelineMilestoneImage image={milestone.image} isTeaser={isTeaser} />
+            )}
 
             <p className="section-label">
               {isTeaser ? (

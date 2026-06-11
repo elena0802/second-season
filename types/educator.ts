@@ -4,6 +4,12 @@ export type EducatorPortrait = {
   caption: string;
 };
 
+export type CareerMilestoneImage = {
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
 export type EducatorProfile = {
   name: string;
   honorific: string;
@@ -23,6 +29,7 @@ export type CareerMilestone = {
   period: string;
   title: string;
   description: string;
+  image?: CareerMilestoneImage;
 };
 
 export type EducatorData = {
