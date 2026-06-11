@@ -6,6 +6,7 @@ export type Article = {
   excerpt: string;
   image: string;
   featured?: boolean;
+  chapterId?: string;
 };
 
 export const issueLabel = "Issue No. 001";
@@ -19,6 +20,17 @@ export type JournalIssue = {
 };
 
 export const journalIssues: JournalIssue[] = [
+  {
+    label: "Teaching Life",
+    title: "교직 인생",
+    description: "37년 교단의 시간을 따라가는 네 편의 이야기.",
+    slugs: [
+      "first-classroom",
+      "no-leave-37-years",
+      "public-middle-school-move",
+      "green-medal-prize",
+    ],
+  },
   {
     label: "Issue #003",
     title: "Quiet Taste",
@@ -233,6 +245,46 @@ export const articles: Article[] = [
     category: "Seasons",
     date: "2026-08-03",
     image: "/images/editorial/seasons/seasons-second-season-beginning-flowers.jpg",
+  },
+  {
+    slug: "first-classroom",
+    title: "첫 발령 날, 교실 문을 열며",
+    excerpt:
+      "처음 교단에 섰던 날의 떨림은 오랜 시간이 지나도 잊히지 않습니다.",
+    category: "교직 인생",
+    date: "2026-08-10",
+    image: "/images/editorial/career/first-classroom.jpg",
+    chapterId: "first-classroom",
+  },
+  {
+    slug: "no-leave-37-years",
+    title: "휴직 없이 37년을 걷다",
+    excerpt:
+      "두 아이를 키우며 교단에 섰던 시간, 평범한 하루들이 가장 큰 자랑으로 남았습니다.",
+    category: "교직 인생",
+    date: "2026-08-17",
+    image: "/images/editorial/career/no-leave-37-years.jpg",
+    chapterId: "no-leave-37-years",
+  },
+  {
+    slug: "public-middle-school-move",
+    title: "가장 잘한 선택은 가장 두려웠던 선택이었다",
+    excerpt:
+      "많은 사람이 만류했지만, 그 선택은 교직 인생의 새로운 시작이 되었습니다.",
+    category: "교직 인생",
+    date: "2026-08-24",
+    image: "/images/editorial/career/public-middle-school-move.jpg",
+    chapterId: "public-middle-school-move",
+  },
+  {
+    slug: "green-medal-prize",
+    title: "상보다 먼저 떠오른 얼굴들",
+    excerpt:
+      "녹조근정훈장을 받던 날, 가장 먼저 떠오른 것은 함께했던 학생들이었습니다.",
+    category: "교직 인생",
+    date: "2026-08-31",
+    image: "/images/editorial/career/green-medal-prize.jpg",
+    chapterId: "green-service-medal",
   },
 ];
 

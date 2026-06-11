@@ -51,6 +51,7 @@ export const careerTimeline: CareerMilestone[] = [
       alt: "아침 빛이 드는 책상 위의 책과 안경",
       caption: "첫 교실 · 아침의 책상 · 교직의 시작",
     },
+    journalSlug: "first-classroom",
   },
   {
     id: "commercial-high-school-years",
@@ -81,6 +82,7 @@ export const careerTimeline: CareerMilestone[] = [
       alt: "창가 아침 차와 책상, 일상의 교육 현장을 이어가는 시간",
       caption: "가정과 교실 사이 · 휴직 없이 이어온 37년",
     },
+    journalSlug: "no-leave-37-years",
   },
   {
     id: "head-teacher-years",
@@ -111,6 +113,7 @@ export const careerTimeline: CareerMilestone[] = [
       alt: "조용한 골목과 저녁빛이 드는 학교 근처 거리",
       caption: "새로운 학교 · 낯선 동네 · 다시 시작하는 길",
     },
+    journalSlug: "public-middle-school-move",
   },
   {
     id: "becoming-career-teacher",
@@ -141,6 +144,7 @@ export const careerTimeline: CareerMilestone[] = [
       alt: "책상 위 펼쳐진 책과 안경, 오후의 고요한 빛",
       caption: "37년을 돌아보는 오후 · 상장보다 먼저 떠오른 교실",
     },
+    journalSlug: "green-medal-prize",
   },
   {
     id: "students-returned",

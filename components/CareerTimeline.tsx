@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { CareerMilestone, CareerMilestoneImage } from "@/types/educator";
 
 type CareerTimelineProps = {
@@ -102,6 +103,19 @@ export default function CareerTimeline({
             >
               {milestone.description}
             </p>
+
+            {milestone.journalSlug && (
+              <Link
+                href={`/journal/${milestone.journalSlug}`}
+                className={
+                  isTeaser
+                    ? "mt-4 inline-block border border-foreground/15 px-4 py-2 text-xs tracking-[0.08em] text-foreground/70 transition-colors hover:border-accent hover:text-accent"
+                    : "mt-5 inline-block border border-foreground/15 px-5 py-2.5 text-sm tracking-[0.04em] text-foreground/70 transition-colors hover:border-accent hover:text-accent"
+                }
+              >
+                관련 이야기 읽기 →
+              </Link>
+            )}
           </li>
         ))}
       </ol>

@@ -37,6 +37,7 @@ export type CareerMilestone = {
   title: string;
   description: string;
   image?: CareerMilestoneImage;
+  journalSlug?: string;
 };
 
 export type EducatorData = {
