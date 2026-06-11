@@ -52,8 +52,19 @@ export const collections: Collection[] = [
   },
 ];
 
+export const homeFeaturedCollectionSlugs: string[] = [
+  "places-of-lingering-sunlight",
+  "places-worth-returning-to",
+];
+
 export function getAllCollections(): Collection[] {
   return collections;
+}
+
+export function getHomeFeaturedCollections(): Collection[] {
+  return homeFeaturedCollectionSlugs
+    .map((slug) => getCollectionBySlug(slug))
+    .filter((collection): collection is Collection => collection !== undefined);
 }
 
 export function getCollectionBySlug(slug: string): Collection | undefined {

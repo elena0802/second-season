@@ -4,6 +4,7 @@ import type { Collection } from "@/types/collection";
 
 type CollectionCardProps = {
   collection: Collection;
+  imageAspect?: "card" | "feature";
 };
 
 function getCollectionSummary(collection: Collection): string {
@@ -31,7 +32,10 @@ function getCollectionCounts(collection: Collection): string | undefined {
   return parts.join(" · ");
 }
 
-export default function CollectionCard({ collection }: CollectionCardProps) {
+export default function CollectionCard({
+  collection,
+  imageAspect = "card",
+}: CollectionCardProps) {
   const summary = getCollectionSummary(collection);
   const counts = getCollectionCounts(collection);
   const href = `/collections/${collection.slug}`;
@@ -43,7 +47,7 @@ export default function CollectionCard({ collection }: CollectionCardProps) {
           <EditorialImage
             src={collection.coverImage}
             alt={collection.title}
-            aspect="card"
+            aspect={imageAspect}
           />
           <div className="mt-6 flex flex-1 flex-col">
             <h3 className="font-serif text-xl leading-snug text-foreground transition-colors group-hover:text-accent sm:text-[1.35rem] md:text-2xl">

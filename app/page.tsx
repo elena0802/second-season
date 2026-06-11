@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import CareerTimelinePreview from "@/components/CareerTimelinePreview";
+import CollectionCard from "@/components/CollectionCard";
 import EditorialImage from "@/components/EditorialImage";
 import NewsletterSubscribeForm from "@/components/NewsletterSubscribeForm";
 import {
@@ -9,6 +10,7 @@ import {
   homeFeaturedStoryDisplay,
   siteImages,
 } from "@/data/articles";
+import { getHomeFeaturedCollections } from "@/data/collections";
 import { educatorProfile, getHomeTimelinePreview } from "@/data/educator";
 import { enrichArticle, enrichArticles } from "@/lib/content";
 
@@ -20,6 +22,7 @@ export default function Home() {
     recentPosts.slice(2, 5),
   ];
   const timelinePreview = getHomeTimelinePreview();
+  const featuredCollections = getHomeFeaturedCollections();
 
   return (
     <>
@@ -128,23 +131,26 @@ export default function Home() {
             <h2 className="mt-5 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
               함께 나누고 싶은 곳들
             </h2>
-            <p className="body-calm mt-8 text-foreground/70 sm:mt-10">
-              좋은 장소는 예쁜 곳이 아니라,
-              <br />
-              다시 누군가와 가고 싶은 곳입니다.
+            <p className="body-calm mt-8 whitespace-pre-line text-foreground/70 sm:mt-10">
+              오랫동안 기억에 남은 장소들과{"\n"}
+              그곳에서 시작된 이야기들을 모았습니다.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 md:mt-16 md:grid-cols-3 md:gap-8">
-            {siteImages.places.map((place) => (
-              <div key={place.src} className="min-w-0">
-                <EditorialImage
-                  src={place.src}
-                  alt={place.alt}
-                  aspect="card"
-                />
-              </div>
+          <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-2 md:gap-12 lg:gap-16">
+            {featuredCollections.map((collection) => (
+              <CollectionCard
+                key={collection.slug}
+                collection={collection}
+                imageAspect="feature"
+              />
             ))}
+          </div>
+
+          <div className="mt-16 text-center md:mt-24">
+            <Link href="/places" className="home-btn">
+              모든 컬렉션 보기 →
+            </Link>
           </div>
         </div>
       </section>
