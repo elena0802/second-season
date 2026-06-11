@@ -26,25 +26,24 @@ export default function Home() {
       {/* Hero */}
       <section className="page-shell mx-auto max-w-7xl py-12 md:py-20 lg:py-24">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
-          <div className="min-w-0 lg:col-span-5 lg:pt-10">
+          <div className="min-w-0 lg:col-span-6 lg:pt-10">
             <p className="section-label">SECOND SEASON</p>
-            <h1 className="mt-5 font-serif text-2xl leading-snug text-foreground sm:text-3xl md:text-4xl">
-              한 교사의 두 번째 계절
+            <h1 className="mt-5 font-serif text-3xl leading-snug text-foreground sm:text-4xl md:text-5xl">
+              박옥주 교사의
+              <br />
+              <span className="whitespace-nowrap">두 번째 계절 이야기</span>
             </h1>
             <p className="body-calm mt-6 text-foreground/80 sm:mt-8">
               교단에서 배운 것들,
               <br />
               그리고 여전히 아름다운 것을 발견하는 일상을 기록합니다.
             </p>
-            <Link
-              href="/journal"
-              className="mt-10 inline-block border border-foreground/20 px-8 py-3.5 text-xs uppercase tracking-[0.28em] text-foreground transition-colors hover:border-accent hover:text-accent sm:mt-12 sm:px-10 sm:tracking-[0.3em]"
-            >
-              Explore Journal
+            <Link href="/journal" className="home-btn mt-10 sm:mt-12">
+              이야기 더보기 →
             </Link>
           </div>
 
-          <div className="min-w-0 lg:col-span-7 lg:flex lg:items-start lg:justify-end lg:pt-10">
+          <div className="min-w-0 lg:col-span-6 lg:flex lg:items-start lg:justify-end lg:pt-10">
             <div className="w-full max-w-xl lg:max-w-lg">
               <EditorialImage
                 src={siteImages.hero.src}
@@ -67,17 +66,17 @@ export default function Home() {
               aspect="feature"
             />
           </div>
-          <div className="mx-auto mt-8 max-w-2xl text-center md:mt-10">
+          <div className="mx-auto mt-5 max-w-2xl text-center md:mt-6">
             <p className="section-label">Featured Story</p>
-            <h2 className="mt-4 font-serif text-2xl leading-tight text-foreground transition-colors group-hover:text-accent sm:text-3xl md:text-4xl lg:text-5xl">
+            <h2 className="mt-3 font-serif text-2xl leading-tight text-foreground transition-colors group-hover:text-accent sm:text-3xl md:text-4xl lg:text-5xl">
               {homeFeaturedStoryDisplay.title}
             </h2>
-            <p className="body-calm mt-5 whitespace-pre-line text-foreground/65 sm:mt-6">
+            <p className="body-calm mt-4 whitespace-pre-line text-foreground/65 sm:mt-5">
               {homeFeaturedStoryDisplay.subtitle}
             </p>
-            <p className="section-label mt-6 text-accent sm:mt-8">
-              {homeFeaturedStoryDisplay.cta}
-            </p>
+            <span className="home-btn mt-5 sm:mt-6">
+              두 번째 계절 읽기 →
+            </span>
           </div>
         </Link>
       </section>
@@ -88,19 +87,16 @@ export default function Home() {
           <div>
             <p className="section-label">Latest Journal</p>
             <h2 className="mt-4 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">
-              Recent Essays
+              최근 글
             </h2>
           </div>
-          <Link
-            href="/journal"
-            className="text-xs uppercase tracking-[0.28em] text-foreground/50 transition-colors hover:text-accent"
-          >
-            View all
+          <Link href="/journal" className="home-btn shrink-0">
+            전체보기 →
           </Link>
         </div>
 
         {firstRow.length > 0 && (
-          <div className="mb-12 grid gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-14">
+          <div className="mb-16 grid gap-10 sm:mb-20 sm:gap-12 lg:grid-cols-2 lg:mb-24 lg:gap-14">
             {firstRow.map((article) => (
               <ArticleCard
                 key={article.slug}
@@ -156,7 +152,7 @@ export default function Home() {
       {/* 교직 인생 */}
       <section className="page-shell mx-auto max-w-7xl py-16 md:py-28">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="section-label">교직 인생</p>
+          <p className="section-label">TEACHING LIFE</p>
           <h2 className="mt-5 font-serif text-2xl leading-snug text-foreground sm:text-3xl md:text-4xl">
             {educatorProfile.homeTeaser.headline}
           </h2>
@@ -168,11 +164,8 @@ export default function Home() {
         <CareerTimelinePreview milestones={timelinePreview} />
 
         <div className="mt-16 text-center md:mt-24">
-          <Link
-            href="/about"
-            className="inline-block font-serif text-2xl text-foreground transition-colors hover:text-accent sm:text-3xl md:text-4xl"
-          >
-            {educatorProfile.homeTeaser.cta}
+          <Link href="/about" className="home-btn">
+            교직 인생 전체 보기 →
           </Link>
         </div>
       </section>
@@ -182,14 +175,14 @@ export default function Home() {
         <div className="page-shell mx-auto max-w-xl text-center">
           <p className="section-label">Newsletter</p>
           <h2 className="mt-5 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">
-            Letters from the Second Season
+            Second Season의 편지
           </h2>
           <p className="body-calm mt-6 text-foreground/65 sm:mt-8">
-            좋은 장소, 조용한 여행,
+            두 번째 계절의 기록을,
             <br />
-            그리고 오래 기억하고 싶은 순간들을 가끔 보내드립니다.
+            좋은 장소와 조용한 순간과 함께 가끔 편지로 나눕니다.
           </p>
-          <NewsletterSubscribeForm source="home" />
+          <NewsletterSubscribeForm source="home" variant="editorial" />
         </div>
       </section>
     </>

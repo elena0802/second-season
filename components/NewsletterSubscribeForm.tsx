@@ -6,10 +6,12 @@ type FormStatus = "idle" | "loading" | "success" | "error";
 
 type NewsletterSubscribeFormProps = {
   source?: "home" | "newsletter" | "footer";
+  variant?: "default" | "editorial";
 };
 
 export default function NewsletterSubscribeForm({
   source = "home",
+  variant = "default",
 }: NewsletterSubscribeFormProps) {
   const inputId = useId();
   const [status, setStatus] = useState<FormStatus>("idle");
@@ -86,9 +88,17 @@ export default function NewsletterSubscribeForm({
           type="submit"
           disabled={status === "loading"}
           aria-busy={status === "loading"}
-          className="border border-foreground/15 px-8 py-3.5 text-xs uppercase tracking-[0.28em] text-foreground transition-colors hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-60 sm:border-l-0"
+          className={
+            variant === "editorial"
+              ? "home-btn shrink-0 sm:border-l-0"
+              : "border border-foreground/15 px-8 py-3.5 text-xs uppercase tracking-[0.28em] text-foreground transition-colors hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-60 sm:border-l-0"
+          }
         >
-          {status === "loading" ? "Sending…" : "Subscribe"}
+          {status === "loading"
+            ? "Sending…"
+            : variant === "editorial"
+              ? "편지 받아보기 →"
+              : "Subscribe"}
         </button>
       </form>
 
