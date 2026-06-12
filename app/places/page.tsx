@@ -7,9 +7,9 @@ import { curatedPlacesForPlacesPage } from "@/data/curatedPlaces";
 import { enrichArticles } from "@/lib/content";
 
 export const metadata = {
-  title: "Places",
+  title: "좋은 공간들",
   description:
-    "좋은 장소는 단순히 예쁜 곳이 아니라, 다시 머물고 싶은 곳입니다.",
+    "오래 기억에 남은 카페, 책방, 산책길, 그리고 여행지들.",
 };
 
 export default function PlacesPage() {
@@ -18,18 +18,18 @@ export default function PlacesPage() {
   const placesArticles = enrichArticles(getArticlesByCategory("Places"));
 
   return (
-    <div className="page-shell mx-auto max-w-7xl pb-24 pt-10 md:pt-14">
-      <header className="max-w-2xl border-b border-muted/50 pb-10 md:pb-16">
-        <p className="section-label">Places</p>
-        <h1 className="mt-5 font-serif text-4xl tracking-[0.02em] text-foreground sm:text-5xl md:text-6xl">
-          Places
+    <div className="pb-24 pt-10 md:pt-14">
+      <header className="page-shell mx-auto max-w-[760px] text-center">
+        <p className="section-label">좋은 공간들</p>
+        <h1 className="mt-5 font-serif-kr text-2xl leading-[1.5] tracking-[0.01em] text-foreground sm:mt-6 sm:text-3xl md:text-4xl">
+          다시 머물고 싶은 장소들
         </h1>
-        <p className="body-calm mt-5 text-foreground/70 sm:mt-6">
-          좋은 장소는 단순히 예쁜 곳이 아니라, 다시 머물고 싶은 곳입니다.
+        <p className="body-calm mx-auto mt-6 max-w-xl whitespace-pre-line text-foreground/65 sm:mt-8">
+          오래 기억에 남은 카페,{"\n"}책방, 산책길, 그리고 여행지들.
         </p>
       </header>
 
-      <div className="py-12 md:py-20">
+      <div className="page-shell mx-auto max-w-7xl py-12 md:py-20">
         <CollectionsSection collections={collections} />
 
         <div className="pt-12 md:pt-20">

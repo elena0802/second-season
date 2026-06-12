@@ -3,22 +3,25 @@ import { getArticlesBySlugs, journalIssues } from "@/data/articles";
 import { enrichArticles } from "@/lib/content";
 
 export const metadata = {
-  title: "Journal",
+  title: "기록과 생각",
+  description:
+    "정년 이후의 삶, 새롭게 배우고 만난 것들에 대한 기록입니다.",
 };
 
 export default function JournalPage() {
   return (
-    <div className="page-shell mx-auto max-w-7xl pb-24 pt-10 md:pt-14">
-      <header className="max-w-2xl border-b border-muted/50 pb-10 md:pb-16">
-        <p className="section-label">Journal</p>
-        <h1 className="mt-5 font-serif text-4xl tracking-[0.02em] text-foreground sm:text-5xl md:text-6xl">
-          Journal
+    <div className="pb-24 pt-10 md:pt-14">
+      <header className="page-shell mx-auto max-w-[760px] text-center">
+        <p className="section-label">기록과 생각</p>
+        <h1 className="mt-5 font-serif-kr text-2xl leading-[1.5] tracking-[0.01em] text-foreground sm:mt-6 sm:text-3xl md:text-4xl">
+          배우고 만나고 기록하는 시간
         </h1>
-        <p className="body-calm mt-5 text-foreground/70 sm:mt-6">
-          장소, 여행, 그리고 두 번째 계절의 일상을 기록합니다.
+        <p className="body-calm mx-auto mt-6 max-w-xl whitespace-pre-line text-foreground/65 sm:mt-8">
+          정년 이후의 삶,{"\n"}새롭게 배우고 만난 것들에 대한 기록입니다.
         </p>
       </header>
 
+      <div className="page-shell mx-auto max-w-7xl">
       {journalIssues.map((issue, index) => {
         const issueArticles = enrichArticles(getArticlesBySlugs(issue.slugs));
 
@@ -52,6 +55,7 @@ export default function JournalPage() {
           </section>
         );
       })}
+      </div>
     </div>
   );
 }
