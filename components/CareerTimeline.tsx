@@ -7,6 +7,7 @@ type CareerTimelineProps = {
   milestones: CareerMilestone[];
   variant?: "full" | "teaser";
   sectionTitle?: string;
+  sectionSubtitle?: string;
 };
 
 function TimelineMilestoneImage({
@@ -45,6 +46,7 @@ export default function CareerTimeline({
   milestones,
   variant = "full",
   sectionTitle,
+  sectionSubtitle,
 }: CareerTimelineProps) {
   const isTeaser = variant === "teaser";
 
@@ -53,12 +55,16 @@ export default function CareerTimeline({
       aria-label="교직 인생 타임라인"
       className={isTeaser ? "mt-8 sm:mt-10" : "mt-12 md:mt-16"}
     >
-      {!isTeaser && (
+      {!isTeaser && sectionTitle && (
         <div className="mb-10 md:mb-14">
-          <p className="section-label">Timeline</p>
-          <h2 className="mt-5 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">
+          <h2 className="font-serif text-2xl leading-snug text-foreground sm:text-3xl md:text-4xl">
             {sectionTitle}
           </h2>
+          {sectionSubtitle && (
+            <p className="mt-3 text-base leading-relaxed text-foreground/65 sm:mt-4 sm:text-lg">
+              {sectionSubtitle}
+            </p>
+          )}
         </div>
       )}
 
@@ -112,7 +118,7 @@ export default function CareerTimeline({
                 className={
                   isTeaser
                     ? "mt-4 inline-block border border-foreground/15 px-4 py-2 text-xs tracking-[0.08em] text-foreground/70 transition-colors hover:border-accent hover:text-accent"
-                    : "mt-5 inline-block border border-foreground/15 px-5 py-2.5 text-sm tracking-[0.04em] text-foreground/70 transition-colors hover:border-accent hover:text-accent"
+                    : "mt-5 inline-flex min-h-11 items-center border border-foreground/15 px-5 py-3 text-sm tracking-[0.04em] text-foreground/75 transition-colors hover:border-accent hover:text-accent"
                 }
               >
                 관련 이야기 읽기 →
