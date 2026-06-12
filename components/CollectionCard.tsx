@@ -4,7 +4,9 @@ import type { Collection } from "@/types/collection";
 
 type CollectionCardProps = {
   collection: Collection;
-  imageAspect?: "card" | "feature";
+  imageAspect?: "card" | "feature" | "placesFeature";
+  homeTypography?: boolean;
+  homePlaces?: boolean;
 };
 
 function getCollectionSummary(collection: Collection): string {
@@ -35,7 +37,17 @@ function getCollectionCounts(collection: Collection): string | undefined {
 export default function CollectionCard({
   collection,
   imageAspect = "card",
+  homeTypography = false,
+  homePlaces = false,
 }: CollectionCardProps) {
+  const titleClassName = homePlaces
+    ? "home-places-card-title transition-colors group-hover:text-accent"
+    : homeTypography
+      ? "home-card-title transition-colors group-hover:text-accent"
+      : "font-serif text-xl leading-snug text-foreground transition-colors group-hover:text-accent sm:text-[1.35rem] md:text-2xl";
+  const summaryClassName = homeTypography
+    ? "home-card-desc mt-4 line-clamp-3"
+    : "mt-4 line-clamp-3 text-sm leading-[1.85] text-foreground/65";
   const summary = getCollectionSummary(collection);
   const counts = getCollectionCounts(collection);
   const href = `/collections/${collection.slug}`;
@@ -50,15 +62,9 @@ export default function CollectionCard({
             aspect={imageAspect}
           />
           <div className="mt-6 flex flex-1 flex-col">
-            <h3 className="font-serif text-xl leading-snug text-foreground transition-colors group-hover:text-accent sm:text-[1.35rem] md:text-2xl">
-              {collection.title}
-            </h3>
+            <h3 className={titleClassName}>{collection.title}</h3>
 
-            {summary && (
-              <p className="mt-4 line-clamp-3 text-sm leading-[1.85] text-foreground/65">
-                {summary}
-              </p>
-            )}
+            {summary && <p className={summaryClassName}>{summary}</p>}
 
             {counts && (
               <p className="mt-5 text-xs tracking-[0.08em] text-foreground/45">
@@ -81,12 +87,10 @@ export default function CollectionCard({
         href={href}
         className="flex min-h-full flex-col border border-foreground/10 bg-background px-6 py-8 transition-colors hover:border-foreground/20 sm:px-7 sm:py-9"
       >
-        <h3 className="font-serif text-xl leading-snug text-foreground transition-colors group-hover:text-accent sm:text-[1.35rem] md:text-2xl">
-          {collection.title}
-        </h3>
+        <h3 className={titleClassName}>{collection.title}</h3>
 
         {summary && (
-          <p className="mt-4 flex-1 text-sm leading-[1.85] text-foreground/65">
+          <p className={homeTypography ? "home-card-desc mt-4 flex-1" : "mt-4 flex-1 text-sm leading-[1.85] text-foreground/65"}>
             {summary}
           </p>
         )}

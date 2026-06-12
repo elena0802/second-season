@@ -45,6 +45,8 @@ export const careerTimeline: CareerMilestone[] = [
     title: "첫 발령, 첫 교실",
     description:
       "처음 학생들을 만나던 날의 설렘과 긴장이 아직도 선명합니다. 교실 문을 열었을 때, 칠판 앞에 서야 한다는 사실이 무겁게 느껴졌습니다. 하지만 학생들의 첫 인사를 받는 순간, 이곳이 내가 오래 머물 공간이 될 것 같다는 생각이 들었습니다.",
+    previewDescription:
+      "처음 학생들을 만난 날의 설렘과 긴장이 아직도 선명합니다. 학생들의 첫 인사를 받는 순간, 오래 머물 공간이 될 것 같다는 생각이 들었습니다. 그 교실에서 교사로서의 첫 시간을 시작했습니다. 돌아보면 모든 이야기의 시작은 그 교실이었습니다.",
     // placeholder: /images/editorial/career/first-classroom.jpg
     image: {
       src: "/images/editorial/career/first-classroom.jpg",
@@ -76,6 +78,8 @@ export const careerTimeline: CareerMilestone[] = [
     title: "휴직 없이 37년을 걷다",
     description:
       "아이 둘을 키우며 한 번도 휴직하지 않고 교직 생활을 이어왔습니다. 담임과 부장교사를 맡으며 바쁜 시간을 보냈지만, 학생들이 있는 교실을 떠나지 않고 싶었습니다.",
+    previewDescription:
+      "아이 둘을 키우며 한 번도 휴직하지 않고 교직을 이어왔습니다. 바쁜 시간 속에서도 학생들이 있는 교실을 떠나고 싶지 않았습니다. 가정과 학교를 함께 돌보는 시간은 쉽지 않았습니다. 하지만 학생들과 함께하는 일상은 늘 저를 다시 교실로 이끌었습니다.",
     // placeholder: /images/editorial/career/no-leave-classroom-years.jpg
     image: {
       src: "/images/editorial/career/no-leave-37-years.jpg",
@@ -107,6 +111,8 @@ export const careerTimeline: CareerMilestone[] = [
     title: "모두가 만류했던 공립중학교로의 이동",
     description:
       "많은 걱정 속에서도 새로운 환경을 선택했던 용기 있는 결정이었습니다. 주변에서 만류하는 목소리가 있었지만, 새로운 학교에서 다시 시작하고 싶었습니다. 그 선택이 이후의 길—진로교사, 상담, 그리고 다시 만난 학생들—로 이어질 줄은 몰랐습니다. 중학생들은 고등학생과 달랐습니다. 더 가까이에서 학생들의 변화를 보게 되었고, 오히려 중학생들에게서 많은 것을 배우게 되었습니다. 공립중학교로의 이동은 단순한 직장 이동이 아니라, 교육관이 확장되는 계기였습니다.",
+    previewDescription:
+      "주변의 만류에도 새로운 학교를 선택했습니다. 그 결정이 진로교사와 상담의 길로 이어질 줄은 몰랐습니다. 새로운 환경은 늘 두려웠지만, 다시 배우는 시간이 되었습니다. 돌아보면 그 선택은 교직 인생의 큰 전환점이었습니다.",
     // placeholder: /images/editorial/career/middle-school-hallway.jpg
     image: {
       src: "/images/editorial/career/public-middle-school-move.jpg",
@@ -138,6 +144,8 @@ export const careerTimeline: CareerMilestone[] = [
     title: "녹조근정훈장을 받다",
     description:
       "37년 교직 인생을 돌아보며 받은 가장 뜻깊은 순간이었습니다. 상을 받는 것이 교직의 목적은 아니었지만, 오래 걸어온 길을 돌아볼 수 있는 시간이 되었습니다. 그날 떠올린 것은 상장보다 교실과 상담실의 기억이었습니다.",
+    previewDescription:
+      "37년을 돌아보며 받은 가장 뜻깊은 순간이었습니다. 그날 떠오른 것은 상장보다 교실과 학생들의 기억이었습니다. 수많은 학생들과 함께한 시간이 있었기에 가능한 순간이었습니다. 그래서 가장 먼저 생각난 것도 학생들의 얼굴이었습니다.",
     // placeholder: /images/editorial/career/green-service-medal-ceremony.jpg
     image: {
       src: "/images/editorial/career/green-medal-prize.jpg",

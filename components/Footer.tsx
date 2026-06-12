@@ -1,12 +1,9 @@
 import Link from "next/link";
 
 const navItems = [
-  { href: "/journal", label: "Journal" },
-  { href: "/places", label: "Places" },
-  { href: "/journeys", label: "Journeys" },
-  { href: "/essays", label: "Essays" },
-  { href: "/seasons", label: "Seasons" },
-  { href: "/about", label: "교직 인생" },
+  { href: "/about", label: "교직 이야기" },
+  { href: "/journal", label: "기록과 생각" },
+  { href: "/places", label: "좋은 공간들" },
 ];
 
 export default function Footer() {

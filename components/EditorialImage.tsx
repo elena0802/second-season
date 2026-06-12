@@ -4,7 +4,7 @@ type EditorialImageProps = {
   src: string;
   alt: string;
   caption?: string;
-  aspect?: "hero" | "feature" | "card" | "wide" | "editor" | "square";
+  aspect?: "hero" | "feature" | "placesFeature" | "card" | "wide" | "editor" | "square";
   priority?: boolean;
   className?: string;
   captionAlign?: "left" | "center" | "right";
@@ -13,6 +13,7 @@ type EditorialImageProps = {
 const aspectClasses = {
   hero: "aspect-[3/2]",
   feature: "aspect-[4/3] md:aspect-[16/9] lg:aspect-[2/1]",
+  placesFeature: "aspect-[4/3] md:aspect-[16/9] lg:aspect-[16/9]",
   card: "aspect-[4/5]",
   wide: "aspect-[21/9] md:aspect-[3/1]",
   editor: "aspect-[4/5] md:aspect-[3/4]",
@@ -28,6 +29,7 @@ const captionAlignClasses = {
 const sizeHints = {
   hero: "(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 32vw",
   feature: "(max-width: 768px) 100vw, 90vw",
+  placesFeature: "(max-width: 768px) 100vw, 45vw",
   card: "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw",
   wide: "100vw",
   editor: "(max-width: 768px) 100vw, 40vw",

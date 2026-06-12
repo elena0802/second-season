@@ -36,6 +36,8 @@ export type CareerMilestone = {
   period: string;
   title: string;
   description: string;
+  /** Shorter copy for Home timeline preview cards only. */
+  previewDescription?: string;
   image?: CareerMilestoneImage;
   journalSlug?: string;
 };

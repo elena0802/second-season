@@ -10,7 +10,10 @@ export function milestoneTitleClassName(
   milestone: CareerMilestone,
 ): string {
   if (milestone.id === "no-leave-37-years") {
-    return baseClassName.replace(/\bfont-serif\b/, "font-serif-kr");
+    return baseClassName
+      .replace(/\bfont-serif\b/, "font-serif-kr")
+      .replace(/\bhome-card-title\b/, "home-card-title-kr")
+      .replace(/\bhome-career-card-title\b/, "home-career-card-title-kr");
   }
 
   return baseClassName;

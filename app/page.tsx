@@ -60,7 +60,7 @@ export default function Home() {
       </section>
 
       {/* Featured Story */}
-      <section className="page-shell mx-auto max-w-7xl py-12 md:py-20">
+      <section className="home-section-featured page-shell mx-auto max-w-7xl">
         <Link href={`/journal/${featured.slug}`} className="group block min-w-0">
           <div className="mx-auto max-w-5xl">
             <EditorialImage
@@ -71,10 +71,10 @@ export default function Home() {
           </div>
           <div className="mx-auto mt-5 max-w-2xl text-center md:mt-6">
             <p className="section-label">Featured Story</p>
-            <h2 className="mt-3 font-serif text-2xl leading-tight text-foreground transition-colors group-hover:text-accent sm:text-3xl md:text-4xl lg:text-5xl">
+            <h2 className="home-featured-title mt-4 transition-colors group-hover:text-accent md:mt-5">
               {homeFeaturedStoryDisplay.title}
             </h2>
-            <p className="body-calm mt-4 whitespace-pre-line text-foreground/65 sm:mt-5">
+            <p className="home-section-desc mt-5 whitespace-pre-line sm:mt-6">
               {homeFeaturedStoryDisplay.subtitle}
             </p>
             <span className="home-btn mt-5 sm:mt-6">
@@ -85,11 +85,11 @@ export default function Home() {
       </section>
 
       {/* Latest Journal */}
-      <section className="page-shell mx-auto max-w-7xl py-16 md:py-28">
-        <div className="mb-12 md:mb-16">
+      <section className="home-section page-shell mx-auto max-w-7xl">
+        <div className="mb-12 md:mb-14">
           <p className="section-label">Latest Journal</p>
           <div className="mt-4 flex items-end justify-between gap-4 md:mt-5">
-            <h2 className="min-w-0 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">
+            <h2 className="home-section-title min-w-0">
               최근 글
             </h2>
             <Link
@@ -109,6 +109,7 @@ export default function Home() {
                 article={article}
                 variant="lead"
                 hideCaption
+                homeTypography
               />
             ))}
           </div>
@@ -121,37 +122,40 @@ export default function Home() {
               article={article}
               variant="magazine"
               hideCaption
+              homeTypography
             />
           ))}
         </div>
       </section>
 
       {/* Places Worth Remembering */}
-      <section id="places" className="bg-muted py-16 md:py-28">
+      <section id="places" className="home-places-section">
         <div className="page-shell mx-auto max-w-7xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="section-label text-foreground/50">Places</p>
-            <h2 className="mt-5 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
+            <h2 className="home-section-title mt-4 md:mt-5">
               함께 나누고 싶은 곳들
             </h2>
-            <p className="body-calm mt-8 whitespace-pre-line text-foreground/70 sm:mt-10">
+            <p className="home-section-desc mt-5 whitespace-pre-line sm:mt-6">
               오랫동안 기억에 남은 장소들과{"\n"}
               그곳에서 시작된 이야기들을 모았습니다.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-2 md:gap-12 lg:gap-16">
+          <div className="mt-12 grid gap-10 md:mt-14 md:grid-cols-2 md:gap-12 lg:gap-14">
             {featuredCollections.map((collection) => (
               <CollectionCard
                 key={collection.slug}
                 collection={collection}
-                imageAspect="feature"
+                imageAspect="placesFeature"
+                homeTypography
+                homePlaces
               />
             ))}
           </div>
 
-          <div className="mt-16 text-center md:mt-24">
-            <Link href="/places" className="home-btn">
+          <div className="mt-12 text-center md:mt-16">
+            <Link href="/places" className="home-btn home-places-cta">
               모든 컬렉션 보기 →
             </Link>
           </div>
@@ -159,20 +163,20 @@ export default function Home() {
       </section>
 
       {/* 교직 인생 */}
-      <section className="page-shell mx-auto max-w-7xl py-16 md:py-28">
+      <section className="home-section page-shell mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl text-center">
           <p className="section-label">TEACHING LIFE</p>
-          <h2 className="mt-5 font-serif text-2xl leading-snug text-foreground sm:text-3xl md:text-4xl">
+          <h2 className="home-section-title mt-4 md:mt-5">
             {educatorProfile.homeTeaser.headline}
           </h2>
-          <p className="body-calm mt-6 whitespace-pre-line text-foreground/70 sm:mt-8">
+          <p className="home-section-desc mt-5 whitespace-pre-line sm:mt-6">
             {educatorProfile.homeTeaser.subheadline}
           </p>
         </div>
 
         <CareerTimelinePreview milestones={timelinePreview} />
 
-        <div className="mt-16 text-center md:mt-24">
+        <div className="mt-14 text-center md:mt-20">
           <Link href="/about" className="home-btn">
             교직 인생 전체 보기 →
           </Link>
@@ -180,13 +184,13 @@ export default function Home() {
       </section>
 
       {/* Newsletter */}
-      <section className="border-t border-muted/50 py-16 md:py-28">
+      <section className="home-section border-t border-muted/50">
         <div className="page-shell mx-auto max-w-xl text-center">
           <p className="section-label">Newsletter</p>
-          <h2 className="mt-5 font-serif text-2xl text-foreground sm:text-3xl md:text-4xl">
+          <h2 className="home-section-title mt-4 md:mt-5">
             Second Season의 편지
           </h2>
-          <p className="body-calm mt-6 text-foreground/65 sm:mt-8">
+          <p className="home-section-desc mt-5 sm:mt-6">
             두 번째 계절의 기록을,
             <br />
             좋은 장소와 조용한 순간과 함께 가끔 편지로 나눕니다.

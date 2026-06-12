@@ -30,14 +30,14 @@ function MilestoneText({ milestone }: { milestone: CareerMilestone }) {
       </p>
       <h3
         className={milestoneTitleClassName(
-          "mt-3 font-serif text-xl leading-snug text-foreground sm:text-2xl md:mt-4 md:text-3xl",
+          "home-career-card-title mt-3 md:mt-4",
           milestone,
         )}
       >
         {milestone.title}
       </h3>
-      <p className="body-calm mt-3 text-foreground/70 sm:mt-4 md:mt-5">
-        {milestone.description}
+      <p className="home-career-card-desc mt-3 sm:mt-4 md:mt-5">
+        {milestone.previewDescription ?? milestone.description}
       </p>
     </div>
   );
